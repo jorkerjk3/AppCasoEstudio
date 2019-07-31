@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UsuariosViewDlg" widgetVar="UsuariosViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewUsuariosTitle}">
+            <h:form id="UsuariosViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{usuariosController.selected != null}">
+                        <h:outputText value="#{bundle.ViewUsuariosLabel_idusuario}"/>
+                        <h:outputText value="#{usuariosController.selected.idusuario}" title="#{bundle.ViewUsuariosTitle_idusuario}"/>
+                        <h:outputText value="#{bundle.ViewUsuariosLabel_nombreusuario}"/>
+                        <h:outputText value="#{usuariosController.selected.nombreusuario}" title="#{bundle.ViewUsuariosTitle_nombreusuario}"/>
+                        <h:outputText value="#{bundle.ViewUsuariosLabel_contraseña}"/>
+                        <h:outputText value="#{usuariosController.selected.contraseña}" title="#{bundle.ViewUsuariosTitle_contraseña}"/>
+                        <h:outputText value="#{bundle.ViewUsuariosLabel_estado}"/>
+                        <p:selectBooleanCheckbox value="#{usuariosController.selected.estado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewUsuariosLabel_fechacreacion}"/>
+                        <h:outputText value="#{usuariosController.selected.fechacreacion}" title="#{bundle.ViewUsuariosTitle_fechacreacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewUsuariosLabel_idpersonas}"/>
+                        <h:outputText value="#{usuariosController.selected.idpersonas}" title="#{bundle.ViewUsuariosTitle_idpersonas}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="UsuariosViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

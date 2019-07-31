@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PersonasViewDlg" widgetVar="PersonasViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewPersonasTitle}">
+            <h:form id="PersonasViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{personasController.selected != null}">
+                        <h:outputText value="#{bundle.ViewPersonasLabel_idpersonas}"/>
+                        <h:outputText value="#{personasController.selected.idpersonas}" title="#{bundle.ViewPersonasTitle_idpersonas}"/>
+                        <h:outputText value="#{bundle.ViewPersonasLabel_nombres}"/>
+                        <h:outputText value="#{personasController.selected.nombres}" title="#{bundle.ViewPersonasTitle_nombres}"/>
+                        <h:outputText value="#{bundle.ViewPersonasLabel_apellidos}"/>
+                        <h:outputText value="#{personasController.selected.apellidos}" title="#{bundle.ViewPersonasTitle_apellidos}"/>
+                        <h:outputText value="#{bundle.ViewPersonasLabel_numerodocumento}"/>
+                        <h:outputText value="#{personasController.selected.numerodocumento}" title="#{bundle.ViewPersonasTitle_numerodocumento}"/>
+                        <h:outputText value="#{bundle.ViewPersonasLabel_fcehanacimiento}"/>
+                        <h:outputText value="#{personasController.selected.fcehanacimiento}" title="#{bundle.ViewPersonasTitle_fcehanacimiento}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPersonasLabel_genero}"/>
+                        <h:outputText value="#{personasController.selected.genero}" title="#{bundle.ViewPersonasTitle_genero}"/>
+                        <h:outputText value="#{bundle.ViewPersonasLabel_email}"/>
+                        <h:outputText value="#{personasController.selected.email}" title="#{bundle.ViewPersonasTitle_email}"/>
+                        <h:outputText value="#{bundle.ViewPersonasLabel_celular}"/>
+                        <h:outputText value="#{personasController.selected.celular}" title="#{bundle.ViewPersonasTitle_celular}"/>
+                        <h:outputText value="#{bundle.ViewPersonasLabel_ingresosmensuales}"/>
+                        <h:outputText value="#{personasController.selected.ingresosmensuales}" title="#{bundle.ViewPersonasTitle_ingresosmensuales}"/>
+                        <h:outputText value="#{bundle.ViewPersonasLabel_estrato}"/>
+                        <h:outputText value="#{personasController.selected.estrato}" title="#{bundle.ViewPersonasTitle_estrato}"/>
+                        <h:outputText value="#{bundle.ViewPersonasLabel_idtipopersona}"/>
+                        <h:outputText value="#{personasController.selected.idtipopersona}" title="#{bundle.ViewPersonasTitle_idtipopersona}"/>
+                        <h:outputText value="#{bundle.ViewPersonasLabel_fechacreacion}"/>
+                        <h:outputText value="#{personasController.selected.fechacreacion}" title="#{bundle.ViewPersonasTitle_fechacreacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPersonasLabel_fechamodificacion}"/>
+                        <h:outputText value="#{personasController.selected.fechamodificacion}" title="#{bundle.ViewPersonasTitle_fechamodificacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPersonasLabel_estado}"/>
+                        <p:selectBooleanCheckbox value="#{personasController.selected.estado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewPersonasLabel_idciudad}"/>
+                        <h:outputText value="#{personasController.selected.idciudad}" title="#{bundle.ViewPersonasTitle_idciudad}"/>
+                        <h:outputText value="#{bundle.ViewPersonasLabel_idestadocivil}"/>
+                        <h:outputText value="#{personasController.selected.idestadocivil}" title="#{bundle.ViewPersonasTitle_idestadocivil}"/>
+                        <h:outputText value="#{bundle.ViewPersonasLabel_idnivelacademico}"/>
+                        <h:outputText value="#{personasController.selected.idnivelacademico}" title="#{bundle.ViewPersonasTitle_idnivelacademico}"/>
+                        <h:outputText value="#{bundle.ViewPersonasLabel_idtipodocumento}"/>
+                        <h:outputText value="#{personasController.selected.idtipodocumento}" title="#{bundle.ViewPersonasTitle_idtipodocumento}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PersonasViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
