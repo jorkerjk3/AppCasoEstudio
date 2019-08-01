@@ -5,15 +5,14 @@
         <Node id="ciudad/Edit.xhtml" x="400" y="900" zoom="true"/>
         <Node id="tipoDocumento/Create.xhtml" x="1650" y="150" zoom="true"/>
         <Node id="tipoDocumento/View.xhtml" x="1400" y="300" zoom="true"/>
-        <Node id="usuarios/List.xhtml" x="650" y="150" zoom="true"/>
         <Node id="personas/Edit.xhtml" x="900" y="300" zoom="true"/>
-        <Node id="welcomePrimefaces.xhtml" x="307" y="736" zoom="true"/>
+        <Node id="usuarios/List.xhtml" x="650" y="150" zoom="true"/>
         <Node id="estadocivil/List.xhtml" x="150" y="1050" zoom="true"/>
-        <Node id="tipoDocumento/Edit.xhtml" x="650" y="600" zoom="true"/>
         <Node id="tipoDocumento/List.xhtml" x="400" y="150" zoom="true"/>
-        <Node id="departamento/Create.xhtml" x="650" y="750" zoom="true"/>
-        <Node id="personas/View.xhtml" x="1900" y="150" zoom="true"/>
-        <Node id="ciudad/View.xhtml" x="400" y="600" zoom="true"/>
+        <Node id="tipoDocumento/Edit.xhtml" x="650" y="600" zoom="true"/>
+        <Node id="departamento/Create.xhtml" x="735" y="643" zoom="true"/>
+        <Node id="personas/View.xhtml" x="654" y="797" zoom="true"/>
+        <Node id="ciudad/View.xhtml" x="728" y="857" zoom="true"/>
         <Node id="estadocivil/View.xhtml" x="1400" y="450" zoom="true"/>
         <Node id="ciudad/List.xhtml" x="900" y="150" zoom="true"/>
         <Node id="departamento/View.xhtml" x="150" y="450" zoom="true"/>
@@ -25,13 +24,13 @@
         <Node id="usuarios/Create.xhtml" x="150" y="150" zoom="true"/>
         <Node id="nivelAcademico/Create.xhtml" x="150" y="900" zoom="true"/>
         <Node id="estadocivil/Edit.xhtml" x="1150" y="150" zoom="true"/>
-        <Node id="nivelAcademico/View.xhtml" x="1400" y="150" zoom="true"/>
         <Node id="nivelAcademico/Edit.xhtml" x="650" y="450" zoom="true"/>
+        <Node id="nivelAcademico/View.xhtml" x="1400" y="150" zoom="true"/>
         <Node id="login.xhtml" x="126" y="801" zoom="true"/>
         <Node id="estadocivil/Create.xhtml" x="400" y="450" zoom="true"/>
-        <Node id="principal.xhtml" x="1150" y="600" zoom="true"/>
+        <Node id="principal.xhtml" x="375" y="784" zoom="true"/>
         <Node id="ciudad/Create.xhtml" x="400" y="300" zoom="true"/>
-        <Node id="personas/List.xhtml" x="1150" y="450" zoom="true"/>
+        <Node id="personas/List.xhtml" x="449" y="857" zoom="true"/>
         <Node id="usuarios/Edit.xhtml" x="1650" y="300" zoom="true"/>
         <Node id="usuarios/View.xhtml" x="150" y="300" zoom="true"/>
     </Scope>

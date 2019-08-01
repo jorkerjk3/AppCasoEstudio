@@ -5,9 +5,14 @@
  */
 package GeneralBeans;
 
+import GeneralController.Controller.UsuariosFacade;
+import dbEntities.Usuarios;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -16,17 +21,29 @@ import java.io.Serializable;
 @Named(value = "loginManageBean")
 @SessionScoped
 public class loginManageBean implements Serializable {
-
     
-    private String usuario;
+    private String nombreUsuario;
     private String password;
+    
+    @EJB
+    private UsuariosFacade usuarioFacade;
+    
+    private Usuarios  usuarioLogueado;
 
-    public String getUsuario() {
-        return usuario;
+    public Usuarios getUsuarioLogueado() {
+        return usuarioLogueado;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setUsuarioLogueado(Usuarios usuarioLogueado) {
+        this.usuarioLogueado = usuarioLogueado;
+    }
+
+    public String getnombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setnombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
     }
 
     public String getPassword() {
@@ -45,6 +62,21 @@ public class loginManageBean implements Serializable {
     }
         
     public String iniciarSesion(){
-    return "IngresarSistema";
+        
+        usuarioLogueado = usuarioFacade.ObtenerNombreusuario(nombreUsuario);
+        
+        if(usuarioLogueado != null){
+             String pass = usuarioLogueado.getContraseña();
+            if(usuarioLogueado.getContraseña().equals(password)){
+               return "IngresarSistema"; 
+            }else 
+            {
+               FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,"Contraseña inválida","Contraseña inválida"));
+               return null;
+            }
+           
+        }
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,"Usuario no existe!","Usuario no existe!"));
+        return null;  
     }
 }

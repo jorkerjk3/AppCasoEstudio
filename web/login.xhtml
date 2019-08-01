@@ -21,11 +21,11 @@
                <div>
                     <img src="Recursos/Imagenes/login1.png" alt="Iniciar Sesión" width="25%" height="20%"/>
                </div>
-            <h:outputLabel value="Usuario" for="usuario"> </h:outputLabel>
-            <h:inputText id="usuario" required="true" requiredMessage="El campo Usuario es requerido." class="fadeIn first" value="#{loginManageBean.usuario}"> </h:inputText>
+            <h:outputLabel value="nombreUsuario" for="usuario"> </h:outputLabel>
+            <p:inputText type="texh" id="nombreUsuario" required="true" requiredMessage="El campo Usuario es requerido." value="#{loginManageBean.nombreUsuario}"> </p:inputText>
             <br/>
             <h:outputLabel value="Contraseña" for="password"> </h:outputLabel>
-            <h:inputText id="password" required="true" requiredMessage="El campo Contraseña es requerido." class="fadeIn second" value="#{loginManageBean.password}"></h:inputText>
+            <p:inputText type="password" id="password" required="true" requiredMessage="El campo Contraseña es requerido." value="#{loginManageBean.password}"></p:inputText>
             <br/>
             <p:commandButton value="Iniciar Sesión" update="panelLoginGrid,growl" action="#{loginManageBean.iniciarSesion()}"/>
           

@@ -6,9 +6,11 @@
 package GeneralController.Controller;
 
 import dbEntities.Usuarios;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,5 +30,17 @@ public class UsuariosFacade extends AbstractFacade<Usuarios> {
     public UsuariosFacade() {
         super(Usuarios.class);
     }
-    
+        
+    public Usuarios ObtenerNombreusuario(String nombreUsuario){
+     Query q = em.createNamedQuery("Usuarios.findByNombreusuario", Usuarios.class).setParameter("nombreusuario", nombreUsuario);
+     
+     List<Usuarios> u = q.getResultList();
+     
+     if(u.size()>0)
+     {
+        return u.get(0);
+     }else {
+        return null;
+     }
+    }
 }

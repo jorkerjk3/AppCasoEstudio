@@ -13,7 +13,15 @@
         <from-view-id>/login.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>IngresarSistema</from-outcome>
-            <to-view-id>/welcomePrimefaces.xhtml</to-view-id>
+            <to-view-id>/principal.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/principal.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>redirectClientes</from-outcome>
+            <to-view-id>/personas/View.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
 </faces-config>
