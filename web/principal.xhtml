@@ -5,11 +5,12 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
      >
-
+ 
     <h:head>
-        <title><ui:insert name="title">Default Title</ui:insert></title>
+        <title><ui:insert name="title">Página Principal</ui:insert></title>
         <h:outputStylesheet library="css" name="jsfcrud.css"/>
         <h:outputScript library="js" name="jsfcrud.js"/>
+        <f:event type="preRenderView" listener="#{principalMangeBean.validarLogueo()}"/>
     </h:head>
 
     <h:body>
@@ -17,7 +18,7 @@
         <p:growl id="growl" life="3000" />
 
         <p:layout fullPage="true">
-            <p:layoutUnit position="north" size="65" header="#{bundle.AppName}">
+            <p:layoutUnit position="north" size="65" header="Centauros Bank">
                 <h:form id="menuForm">
                     <p:menubar>
                         <p:menuitem value="#{bundle.Home}" outcome="/principal" icon="ui-icon-home"/>
@@ -43,7 +44,7 @@
 
             <p:layoutUnit position="center">
                 <ui:insert name="body"/>
-                               aasdasd
+                   
             </p:layoutUnit>
 
         </p:layout>

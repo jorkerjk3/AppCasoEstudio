@@ -1,39 +1,35 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package GeneralBeans;
 
+import dbEntities.Usuarios;
+import java.io.IOException;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
-/**
- *
- * @author usuario
- */
 @Named(value = "principalMangeBean")
 @RequestScoped
 public class principalMangeBean {
 
-    /**
-     * Creates a new instance of principalMangeBean
-     */
+    
     public principalMangeBean() {
     }
 
-public String redireccionarVistas(Integer tipoVista){//1 = Clientes
-      
-        String resultado = "";
-        
-        return "login?faces-redirect=true";
-        
-//        if(tipoVista == 1){
-//           resultado = "redirectClientes";
-//        }else if(tipoVista == 2){
-//           resultado = "redirectCiudad";
-//        }
-        
-       // return resultado;   
-    }    
+ public void validarLogueo ()
+    {    
+        try{
+           FacesContext ctx = FacesContext.getCurrentInstance();
+            Usuarios us = (Usuarios)  FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuarioLogueado");
+           
+           if(us == null){
+              ctx.getExternalContext().redirect("noAutorizado.xhtml");
+           }
+           
+        }catch( IOException ex){
+          FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,ex.getMessage(),"Error interno del servidor."));
+           
+        }
+       
+    }   
 }

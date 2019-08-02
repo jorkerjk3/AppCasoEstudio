@@ -3,25 +3,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
+      
+    <link href="Recursos/Css/login.css" rel="stylesheet" type="text/css"/>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="Recursos/Css/login.css" rel="stylesheet" type="text/css"/>
+        
      <h:head>
         <title>App Caso Estudio</title>
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <link href="Recursos/Css/login.css" rel="stylesheet" type="text/css"/>
     </h:head>
     
-     <h:body>       
-   <div class="wrapper fadeInDown">
-  <div id="formContent">
+ <h:body>       
+  <div class="wrapper fadeInDown" >
+  <div id="formContent" style="top: -80px">
      
          <h:form id="loginForm">      
              <p:growl id="growl" life="3000"></p:growl>
-           <h:panelGrid id="panelLoginGrid">
-               <div>
-                    <img src="Recursos/Imagenes/login1.png" alt="Iniciar Sesión" width="25%" height="20%"/>
-               </div>
-            <h:outputLabel value="nombreUsuario" for="usuario"> </h:outputLabel>
+           <h:panelGrid id="panelLoginGrid">               
+            <img src="Recursos/Imagenes/login1.png" alt="Iniciar Sesión" width="25%" height="20%"/>
+               
+            <h:outputLabel value="Usuario" for="usuario"> </h:outputLabel>
             <p:inputText type="texh" id="nombreUsuario" required="true" requiredMessage="El campo Usuario es requerido." value="#{loginManageBean.nombreUsuario}"> </p:inputText>
             <br/>
             <h:outputLabel value="Contraseña" for="password"> </h:outputLabel>
