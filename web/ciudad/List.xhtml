@@ -6,7 +6,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="/template.xhtml">
+    <ui:composition template="/principal.xhtml">
 
 
         <ui:define name="title">
@@ -23,27 +23,26 @@
                                  rows="10"
                                  rowsPerPageTemplate="10,20,30,40,50"
                                  >
-
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                         <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListCiudadTitle_idciudad}"/>
+                                <h:outputText value="#Id Ciudad"/>
                             </f:facet>
                             <h:outputText value="#{item.idciudad}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListCiudadTitle_nombreciudad}"/>
+                                <h:outputText value="Ciudad"/>
                             </f:facet>
                             <h:outputText value="#{item.nombreciudad}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListCiudadTitle_iddepartamento}"/>
+                                <h:outputText value="Departamento"/>
                             </f:facet>
-                            <h:outputText value="#{item.iddepartamento}"/>
+                            <h:outputText value="#{item.iddepartamento.nombredepartamento}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{ciudadController.prepareCreate}" update=":CiudadCreateForm" oncomplete="PF('CiudadCreateDialog').show()"/>

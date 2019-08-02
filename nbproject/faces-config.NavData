@@ -2,11 +2,11 @@
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
-        <Node id="ciudad/Edit.xhtml" x="400" y="900" zoom="true"/>
         <Node id="tipoDocumento/Create.xhtml" x="1650" y="150" zoom="true"/>
+        <Node id="ciudad/Edit.xhtml" x="400" y="900" zoom="true"/>
         <Node id="tipoDocumento/View.xhtml" x="1400" y="300" zoom="true"/>
-        <Node id="personas/Edit.xhtml" x="900" y="300" zoom="true"/>
         <Node id="usuarios/List.xhtml" x="650" y="150" zoom="true"/>
+        <Node id="personas/Edit.xhtml" x="900" y="300" zoom="true"/>
         <Node id="estadocivil/List.xhtml" x="150" y="1050" zoom="true"/>
         <Node id="tipoDocumento/List.xhtml" x="400" y="150" zoom="true"/>
         <Node id="tipoDocumento/Edit.xhtml" x="650" y="600" zoom="true"/>
@@ -30,8 +30,8 @@
         <Node id="estadocivil/Create.xhtml" x="400" y="450" zoom="true"/>
         <Node id="principal.xhtml" x="375" y="784" zoom="true"/>
         <Node id="ciudad/Create.xhtml" x="400" y="300" zoom="true"/>
-        <Node id="personas/List.xhtml" x="449" y="857" zoom="true"/>
         <Node id="usuarios/Edit.xhtml" x="1650" y="300" zoom="true"/>
+        <Node id="personas/List.xhtml" x="449" y="857" zoom="true"/>
         <Node id="usuarios/View.xhtml" x="150" y="300" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>

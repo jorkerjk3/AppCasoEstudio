@@ -6,8 +6,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="/template.xhtml">
-
+    <ui:composition template="/principal.xhtml">
 
         <ui:define name="title">
             <h:outputText value="#{bundle.ListPersonasTitle}"></h:outputText>
@@ -29,31 +28,31 @@
 
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPersonasTitle_idpersonas}"/>
+                                <h:outputText value="#Id"/>
                             </f:facet>
                             <h:outputText value="#{item.idpersonas}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPersonasTitle_nombres}"/>
+                                <h:outputText value="Nombres"/>
                             </f:facet>
                             <h:outputText value="#{item.nombres}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPersonasTitle_apellidos}"/>
+                                <h:outputText value="Apellidos"/>
                             </f:facet>
                             <h:outputText value="#{item.apellidos}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPersonasTitle_numerodocumento}"/>
+                                <h:outputText value="Documento"/>
                             </f:facet>
                             <h:outputText value="#{item.numerodocumento}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPersonasTitle_fcehanacimiento}"/>
+                                <h:outputText value="Fecha Nac"/>
                             </f:facet>
                             <h:outputText value="#{item.fcehanacimiento}">
                                 <f:convertDateTime pattern="MM/dd/yyyy" />
@@ -61,19 +60,19 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPersonasTitle_genero}"/>
+                                <h:outputText value="Genero"/>
                             </f:facet>
                             <h:outputText value="#{item.genero}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPersonasTitle_email}"/>
+                                <h:outputText value="Email"/>
                             </f:facet>
                             <h:outputText value="#{item.email}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPersonasTitle_celular}"/>
+                                <h:outputText value="Celular"/>
                             </f:facet>
                             <h:outputText value="#{item.celular}"/>
                         </p:column>
@@ -119,9 +118,9 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPersonasTitle_idciudad}"/>
+                                <h:outputText value="Ciudad"/>
                             </f:facet>
-                            <h:outputText value="#{item.idciudad}"/>
+                            <h:outputText value="#{item.idciudad.nombreciudad}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">

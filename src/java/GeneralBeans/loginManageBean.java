@@ -67,8 +67,9 @@ public class loginManageBean implements Serializable {
         
         if(usuarioLogueado != null){
              String pass = usuarioLogueado.getContraseña();
-            if(usuarioLogueado.getContraseña().equals(password)){
-               return "IngresarSistema"; 
+            if(usuarioLogueado.getContraseña().equals(password)){               
+               FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuarioLogueado", usuarioLogueado);
+               return "/principal?faces-redirect=true";
             }else 
             {
                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,"Contraseña inválida","Contraseña inválida"));

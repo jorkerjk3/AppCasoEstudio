@@ -26,12 +26,14 @@ public String redireccionarVistas(Integer tipoVista){//1 = Clientes
       
         String resultado = "";
         
-        if(tipoVista == 1){
-           resultado = "redirectClientes";
-        }else if(tipoVista == 2){
-           resultado = "redirectCiudad";
-        }
+        return "login?faces-redirect=true";
         
-        return resultado;   
+//        if(tipoVista == 1){
+//           resultado = "redirectClientes";
+//        }else if(tipoVista == 2){
+//           resultado = "redirectCiudad";
+//        }
+        
+       // return resultado;   
     }    
 }

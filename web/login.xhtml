@@ -27,11 +27,10 @@
             <h:outputLabel value="Contraseña" for="password"> </h:outputLabel>
             <p:inputText type="password" id="password" required="true" requiredMessage="El campo Contraseña es requerido." value="#{loginManageBean.password}"></p:inputText>
             <br/>
-            <p:commandButton value="Iniciar Sesión" update="panelLoginGrid,growl" action="#{loginManageBean.iniciarSesion()}"/>
-          
+                    
         </h:panelGrid>
     <div id="formFooter">
-      <a class="underlineHover" href="#">Registrarme</a>
+      <p:commandButton value="Iniciar Sesión" update="panelLoginGrid,growl" action="#{loginManageBean.iniciarSesion()}"/>
     </div>
        </h:form>
   

@@ -3,43 +3,52 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+     >
 
-    <f:view contentType="text/html">
-        <h:head>
-            <f:facet name="first">
-                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>App Centauros</title>
-            </f:facet>
-        </h:head>
+    <h:head>
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+        <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <h:outputScript library="js" name="jsfcrud.js"/>
+    </h:head>
 
-        <h:body>
+    <h:body>
 
-            <p:layout fullPage="true">
+        <p:growl id="growl" life="3000" />
 
-                <p:layoutUnit position="north" size="50" resizable="true" closable="true" collapsible="true">
-                    Centauros Bank s.a.s
-                </p:layoutUnit>
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" size="65" header="#{bundle.AppName}">
+                <h:form id="menuForm">
+                    <p:menubar>
+                        <p:menuitem value="#{bundle.Home}" outcome="/principal" icon="ui-icon-home"/>
+                        <p:submenu label="Modulos">                           
+                            <p:menuitem value="Personas" outcome="/personas/List.xhtml" />                            
+                        </p:submenu>
+                        <p:submenu label="Maestros">
+                            <p:menuitem value="Ciudad" outcome="/ciudad/List.xhtml" />
+                            <p:menuitem value="Departamento" outcome="/departamento/List.xhtml" />
+                            <p:menuitem value="Estadocivil" outcome="/estadocivil/List.xhtml" />
+                            <p:menuitem value="NivelAcademico" outcome="/nivelAcademico/List.xhtml" />
+                            <p:menuitem value="TipoDocumento" outcome="/tipoDocumento/List.xhtml" />
+                            <p:menuitem value="Usuarios" outcome="/usuarios/List.xhtml" />
+                        </p:submenu>
+                    </p:menubar>
+                </h:form>
+            </p:layoutUnit>
 
-                <p:layoutUnit position="west" size="140" header="Acciones" collapsible="true">
-                    <p:menu>
-                        <p:menuitem value="Clientes" url="personas/create.xhtml"/>
-                        <p:menuitem value="Ciudades" url="http://www.primefaces.org/themes.html"/>                            
-                            
-                    </p:menu>
-                    <p:menu>
-                            <p:menuitem value="Cerrar Sesión" url="http://www.primefaces.org/themes.html" />             
-                    </p:menu>
-                </p:layoutUnit>
+            <p:layoutUnit position="south" size="60">
+                <ui:insert name="footer"/>
+                <p align="center">  © Amilkar MB 2019</p> 
+            </p:layoutUnit>
 
-                <p:layoutUnit position="center">
-                    
-                </p:layoutUnit>
+            <p:layoutUnit position="center">
+                <ui:insert name="body"/>
+                               aasdasd
+            </p:layoutUnit>
 
-            </p:layout>
+        </p:layout>
 
-        </h:body>
+    </h:body>
 
-    </f:view>
 </html>
 
