@@ -9,7 +9,7 @@
     <ui:composition template="/principal.xhtml">
 
         <ui:define name="title">
-            <h:outputText value="#{bundle.ListPersonasTitle}"></h:outputText>
+            <h:outputText value="Listado Personas"></h:outputText>
         </ui:define>
 
         <ui:define name="body">
@@ -46,16 +46,22 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Documento"/>
+                                <h:outputText value="Tipo Documento"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idtipodocumento.descripcion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Número Documento"/>
                             </f:facet>
                             <h:outputText value="#{item.numerodocumento}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Fecha Nac"/>
+                                <h:outputText value="Fecha Nacimiento"/>
                             </f:facet>
                             <h:outputText value="#{item.fcehanacimiento}">
-                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
                             </h:outputText>
                         </p:column>
                         <p:column>
@@ -78,43 +84,45 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPersonasTitle_ingresosmensuales}"/>
+                                <h:outputText value="Ingresos"/>
                             </f:facet>
                             <h:outputText value="#{item.ingresosmensuales}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPersonasTitle_estrato}"/>
+                                <h:outputText value="Estrato"/>
                             </f:facet>
                             <h:outputText value="#{item.estrato}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPersonasTitle_idtipopersona}"/>
+                                <h:outputText value="Rol"/>
                             </f:facet>
-                            <h:outputText value="#{item.idtipopersona}"/>
+                        
+                            <h:outputText value="#{(item.idtipopersona eq 1?'Admin':'Cliente')}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPersonasTitle_fechacreacion}"/>
+                                <h:outputText value="Fecha Creación"/>
                             </f:facet>
                             <h:outputText value="#{item.fechacreacion}">
-                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
                             </h:outputText>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPersonasTitle_fechamodificacion}"/>
+                                <h:outputText value="Fecha Modificación"/>
                             </f:facet>
                             <h:outputText value="#{item.fechamodificacion}">
-                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
                             </h:outputText>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPersonasTitle_estado}"/>
+                                <h:outputText value="Estado"/>
                             </f:facet>
-                            <p:selectBooleanCheckbox value="#{item.estado}" disabled="true"/>
+                            
+                            <h:outputText style="color: darkblue" value="#{item.estado eq true ? 'Activo':'Inactivo'}"/>                            
                         </p:column>
                         <p:column>
                             <f:facet name="header">
@@ -124,22 +132,17 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPersonasTitle_idestadocivil}"/>
+                                <h:outputText value="Estado Civil"/>
                             </f:facet>
-                            <h:outputText value="#{item.idestadocivil}"/>
+                            <h:outputText value="#{item.idestadocivil.descripcion}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPersonasTitle_idnivelacademico}"/>
+                                <h:outputText value="Nivel Académico"/>
                             </f:facet>
-                            <h:outputText value="#{item.idnivelacademico}"/>
+                            <h:outputText value="#{item.idnivelacademico.descripcion}"/>
                         </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPersonasTitle_idtipodocumento}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idtipodocumento}"/>
-                        </p:column>
+                        
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{personasController.prepareCreate}" update=":PersonasCreateForm" oncomplete="PF('PersonasCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":PersonasViewForm" oncomplete="PF('PersonasViewDialog').show()" disabled="#{empty personasController.selected}"/>

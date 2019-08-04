@@ -8,65 +8,94 @@
 
     <ui:composition>
 
-        <p:dialog id="PersonasCreateDlg" widgetVar="PersonasCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePersonasTitle}">
+        <p:dialog id="PersonasCreateDlg" widgetVar="PersonasCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="Crear Persona">
             <h:form id="PersonasCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{personasController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreatePersonasLabel_idpersonas}" for="idpersonas" />
-                        <p:inputText id="idpersonas" value="#{personasController.selected.idpersonas}" title="#{bundle.CreatePersonasTitle_idpersonas}" required="true" requiredMessage="#{bundle.CreatePersonasRequiredMessage_idpersonas}"/>
-                        <p:outputLabel value="#{bundle.CreatePersonasLabel_nombres}" for="nombres" />
+                       
+                        <p:outputLabel value="Nombres" for="nombres" />
                         <p:inputText id="nombres" value="#{personasController.selected.nombres}" title="#{bundle.CreatePersonasTitle_nombres}" required="true" requiredMessage="#{bundle.CreatePersonasRequiredMessage_nombres}"/>
-                        <p:outputLabel value="#{bundle.CreatePersonasLabel_apellidos}" for="apellidos" />
+                        <p:outputLabel value="Apellidos" for="apellidos" />
                         <p:inputText id="apellidos" value="#{personasController.selected.apellidos}" title="#{bundle.CreatePersonasTitle_apellidos}" required="true" requiredMessage="#{bundle.CreatePersonasRequiredMessage_apellidos}"/>
-                        <p:outputLabel value="#{bundle.CreatePersonasLabel_numerodocumento}" for="numerodocumento" />
-                        <p:inputText id="numerodocumento" value="#{personasController.selected.numerodocumento}" title="#{bundle.CreatePersonasTitle_numerodocumento}" required="true" requiredMessage="#{bundle.CreatePersonasRequiredMessage_numerodocumento}"/>
-                        <p:outputLabel value="#{bundle.CreatePersonasLabel_fcehanacimiento}" for="fcehanacimiento" />
-                        <p:calendar id="fcehanacimiento" pattern="MM/dd/yyyy" value="#{personasController.selected.fcehanacimiento}" title="#{bundle.EditPersonasTitle_fcehanacimiento}" required="true" requiredMessage="#{bundle.EditPersonasRequiredMessage_fcehanacimiento}" showOn="button"/>
-                        <p:outputLabel value="#{bundle.CreatePersonasLabel_genero}" for="genero" />
-                        <p:inputText id="genero" value="#{personasController.selected.genero}" title="#{bundle.CreatePersonasTitle_genero}" required="true" requiredMessage="#{bundle.CreatePersonasRequiredMessage_genero}"/>
-                        <p:outputLabel value="#{bundle.CreatePersonasLabel_email}" for="email" />
-                        <p:inputText id="email" value="#{personasController.selected.email}" title="#{bundle.CreatePersonasTitle_email}" required="true" requiredMessage="#{bundle.CreatePersonasRequiredMessage_email}"/>
-                        <p:outputLabel value="#{bundle.CreatePersonasLabel_celular}" for="celular" />
-                        <p:inputText id="celular" value="#{personasController.selected.celular}" title="#{bundle.CreatePersonasTitle_celular}" required="true" requiredMessage="#{bundle.CreatePersonasRequiredMessage_celular}"/>
-                        <p:outputLabel value="#{bundle.CreatePersonasLabel_ingresosmensuales}" for="ingresosmensuales" />
-                        <p:inputText id="ingresosmensuales" value="#{personasController.selected.ingresosmensuales}" title="#{bundle.CreatePersonasTitle_ingresosmensuales}" />
-                        <p:outputLabel value="#{bundle.CreatePersonasLabel_estrato}" for="estrato" />
-                        <p:inputText id="estrato" value="#{personasController.selected.estrato}" title="#{bundle.CreatePersonasTitle_estrato}" />
-                        <p:outputLabel value="#{bundle.CreatePersonasLabel_idtipopersona}" for="idtipopersona" />
-                        <p:inputText id="idtipopersona" value="#{personasController.selected.idtipopersona}" title="#{bundle.CreatePersonasTitle_idtipopersona}" required="true" requiredMessage="#{bundle.CreatePersonasRequiredMessage_idtipopersona}"/>
-                        <p:outputLabel value="#{bundle.CreatePersonasLabel_fechacreacion}" for="fechacreacion" />
-                        <p:calendar id="fechacreacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{personasController.selected.fechacreacion}" title="#{bundle.EditPersonasTitle_fechacreacion}" required="true" requiredMessage="#{bundle.EditPersonasRequiredMessage_fechacreacion}" showOn="button"/>
-                        <p:outputLabel value="#{bundle.CreatePersonasLabel_fechamodificacion}" for="fechamodificacion" />
-                        <p:calendar id="fechamodificacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{personasController.selected.fechamodificacion}" title="#{bundle.EditPersonasTitle_fechamodificacion}"  showOn="button"/>
-                        <p:outputLabel value="#{bundle.CreatePersonasLabel_estado}" for="estado" />
-                        <p:selectBooleanCheckbox id="estado" value="#{personasController.selected.estado}" required="true" requiredMessage="#{bundle.EditPersonasRequiredMessage_estado}"/>
-                        <p:outputLabel value="#{bundle.CreatePersonasLabel_idciudad}" for="idciudad" />
-                        <p:selectOneMenu id="idciudad" value="#{personasController.selected.idciudad}" required="true" requiredMessage="#{bundle.EditPersonasRequiredMessage_idciudad}">
-                            <f:selectItems value="#{ciudadController.itemsAvailableSelectOne}"
-                                           var="idciudadItem"
-                                           itemValue="#{idciudadItem}"/>
-                        </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreatePersonasLabel_idestadocivil}" for="idestadocivil" />
-                        <p:selectOneMenu id="idestadocivil" value="#{personasController.selected.idestadocivil}" required="true" requiredMessage="#{bundle.EditPersonasRequiredMessage_idestadocivil}">
-                            <f:selectItems value="#{estadocivilController.itemsAvailableSelectOne}"
-                                           var="idestadocivilItem"
-                                           itemValue="#{idestadocivilItem}"/>
-                        </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreatePersonasLabel_idnivelacademico}" for="idnivelacademico" />
-                        <p:selectOneMenu id="idnivelacademico" value="#{personasController.selected.idnivelacademico}" required="true" requiredMessage="#{bundle.EditPersonasRequiredMessage_idnivelacademico}">
-                            <f:selectItems value="#{nivelAcademicoController.itemsAvailableSelectOne}"
-                                           var="idnivelacademicoItem"
-                                           itemValue="#{idnivelacademicoItem}"/>
-                        </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreatePersonasLabel_idtipodocumento}" for="idtipodocumento" />
+                        
+                        <p:outputLabel value="Tipo Documento" for="idtipodocumento" />
                         <p:selectOneMenu id="idtipodocumento" value="#{personasController.selected.idtipodocumento}" required="true" requiredMessage="#{bundle.EditPersonasRequiredMessage_idtipodocumento}">
                             <f:selectItems value="#{tipoDocumentoController.itemsAvailableSelectOne}"
                                            var="idtipodocumentoItem"
+                                           itemLabel="#{idtipodocumentoItem.descripcion}"
                                            itemValue="#{idtipodocumentoItem}"/>
                         </p:selectOneMenu>
+                        
+                        <p:outputLabel value="Documento" for="numerodocumento" />
+                        <p:inputText id="numerodocumento" value="#{personasController.selected.numerodocumento}" title="#{bundle.CreatePersonasTitle_numerodocumento}" required="true" requiredMessage="#{bundle.CreatePersonasRequiredMessage_numerodocumento}"/>
+                        
+                        
+                        <p:outputLabel value="Fecha Nacimiento" for="fcehanacimiento" />
+                        <p:calendar id="fcehanacimiento" pattern="dd/MM/yyyy" value="#{personasController.selected.fcehanacimiento}" title="#{bundle.EditPersonasTitle_fcehanacimiento}" required="true" requiredMessage="#{bundle.EditPersonasRequiredMessage_fcehanacimiento}" showOn="button"/>
+                        
+                        <p:outputLabel value="Genero" for="genero" />                        
+                        <p:selectOneMenu id="genero" value="#{personasController.selected.genero}" required="true" requiredMessage="#{bundle.CreatePersonasRequiredMessage_genero}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItem 
+                                           itemLabel="Masculino"
+                                           itemValue="M"/>
+                            <f:selectItem 
+                                           itemLabel="Femenino"
+                                           itemValue="F"/>                           
+                            <f:selectItem 
+                                           itemLabel="Indeterminado"
+                                           itemValue="I"/> 
+                        </p:selectOneMenu>
+                        
+                        <p:outputLabel value="Email" for="email" />
+                        <p:inputText id="email" value="#{personasController.selected.email}" title="#{bundle.CreatePersonasTitle_email}" required="true" requiredMessage="#{bundle.CreatePersonasRequiredMessage_email}"/>
+                       
+                        <p:outputLabel value="Celular" for="celular" />
+                        <p:inputText id="celular" value="#{personasController.selected.celular}" title="#{bundle.CreatePersonasTitle_celular}" required="true" requiredMessage="#{bundle.CreatePersonasRequiredMessage_celular}"/>
+                        <p:outputLabel value="Ingresos" for="ingresosmensuales" />                       
+                        <p:inputText id="ingresosmensuales" value="#{personasController.selected.ingresosmensuales}" title="#{bundle.CreatePersonasTitle_ingresosmensuales}" />
+                        <p:outputLabel value="Estrato" for="estrato" />
+                        <p:inputText id="estrato" value="#{personasController.selected.estrato}" title="#{bundle.CreatePersonasTitle_estrato}" />
+                       
+                        <p:outputLabel value="Rol" for="idtipopersona" />                       
+                        <p:selectOneMenu id="idtipopersona" value="#{personasController.selected.idtipopersona}" required="true" requiredMessage="#{bundle.CreatePersonasRequiredMessage_idtipopersona}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItem 
+                                           itemLabel="Cliente"
+                                           itemValue="#{0}"/>
+                            <f:selectItem 
+                                           itemLabel="Administrador"
+                                           itemValue="#{1}"/>                           
+                           
+                        </p:selectOneMenu>
+                        
+                        <p:outputLabel value="Estado" for="estado" />
+                        <p:selectBooleanCheckbox id="estado" value="#{personasController.selected.estado}" required="true" requiredMessage="#{bundle.EditPersonasRequiredMessage_estado}"/>
+                        <p:outputLabel value="Ciudad" for="idciudad" />
+                        <p:selectOneMenu id="idciudad" value="#{personasController.selected.idciudad}" required="true" requiredMessage="#{bundle.EditPersonasRequiredMessage_idciudad}">
+                            <f:selectItems value="#{ciudadController.itemsAvailableSelectOne}"
+                                           var="idciudadItem"
+                                           itemLabel="#{idciudadItem.nombreciudad}"
+                                           itemValue="#{idciudadItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Estado Civil" for="idestadocivil" />
+                        <p:selectOneMenu id="idestadocivil" value="#{personasController.selected.idestadocivil}" required="true" requiredMessage="#{bundle.EditPersonasRequiredMessage_idestadocivil}">
+                            <f:selectItems value="#{estadocivilController.itemsAvailableSelectOne}"
+                                           var="idestadocivilItem"
+                                           itemLabel="#{idestadocivilItem.descripcion}"
+                                           itemValue="#{idestadocivilItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Nivel Académico" for="idnivelacademico" />
+                        <p:selectOneMenu id="idnivelacademico" value="#{personasController.selected.idnivelacademico}" required="true" requiredMessage="#{bundle.EditPersonasRequiredMessage_idnivelacademico}">
+                            <f:selectItems value="#{nivelAcademicoController.itemsAvailableSelectOne}"
+                                           var="idnivelacademicoItem"
+                                           itemLabel="#{idnivelacademicoItem.descripcion}"
+                                           itemValue="#{idnivelacademicoItem}"/>
+                        </p:selectOneMenu>
+                        
                     </p:panelGrid>
                     <p:commandButton actionListener="#{personasController.create}" value="#{bundle.Save}" update="display,:PersonasListForm:datalist,:growl" oncomplete="handleSubmit(args,'PersonasCreateDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="PersonasCreateDialog.hide()"/>
+
                 </h:panelGroup>
             </h:form>
         </p:dialog>

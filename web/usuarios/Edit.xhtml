@@ -8,24 +8,26 @@
 
     <ui:composition>
 
-        <p:dialog id="UsuariosEditDlg" widgetVar="UsuariosEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditUsuariosTitle}">
+        <p:dialog id="UsuariosEditDlg" widgetVar="UsuariosEditDialog" modal="true" resizable="false" appendTo="@(body)" header="Editar Usuario">
             <h:form id="UsuariosEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{usuariosController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditUsuariosLabel_idusuario}" for="idusuario" />
-                        <p:inputText id="idusuario" value="#{usuariosController.selected.idusuario}" title="#{bundle.EditUsuariosTitle_idusuario}" required="true" requiredMessage="#{bundle.EditUsuariosRequiredMessage_idusuario}"/>
+                                           
                         <p:outputLabel value="#{bundle.EditUsuariosLabel_nombreusuario}" for="nombreusuario" />
-                        <p:inputText id="nombreusuario" value="#{usuariosController.selected.nombreusuario}" title="#{bundle.EditUsuariosTitle_nombreusuario}" required="true" requiredMessage="#{bundle.EditUsuariosRequiredMessage_nombreusuario}"/>
+                        <p:inputText id="nombreusuario" value="#{usuariosController.selected.nombreusuario}" title="#{bundle.EditUsuariosTitle_nombreusuario}" required="true" requiredMessage="El nombre usuario es requerido"/>
+                       
                         <p:outputLabel value="#{bundle.EditUsuariosLabel_contraseña}" for="contraseña" />
-                        <p:inputText id="contraseña" value="#{usuariosController.selected.contraseña}" title="#{bundle.EditUsuariosTitle_contraseña}" required="true" requiredMessage="#{bundle.EditUsuariosRequiredMessage_contraseña}"/>
+                        <p:inputText id="contraseña" value="#{usuariosController.selected.contraseña}" title="#{bundle.EditUsuariosTitle_contraseña}" required="true" requiredMessage="El campo contraseña es requerido"/>
+                        
                         <p:outputLabel value="#{bundle.EditUsuariosLabel_estado}" for="estado" />
                         <p:selectBooleanCheckbox id="estado" value="#{usuariosController.selected.estado}" required="true" requiredMessage="#{bundle.EditUsuariosRequiredMessage_estado}"/>
-                        <p:outputLabel value="#{bundle.EditUsuariosLabel_fechacreacion}" for="fechacreacion" />
-                        <p:calendar id="fechacreacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{usuariosController.selected.fechacreacion}" title="#{bundle.EditUsuariosTitle_fechacreacion}" required="true" requiredMessage="#{bundle.EditUsuariosRequiredMessage_fechacreacion}" showOn="button"/>
-                        <p:outputLabel value="#{bundle.EditUsuariosLabel_idpersonas}" for="idpersonas" />
-                        <p:selectOneMenu id="idpersonas" value="#{usuariosController.selected.idpersonas}" required="true" requiredMessage="#{bundle.EditUsuariosRequiredMessage_idpersonas}">
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                      
+                                             
+                        <p:outputLabel value="Asociar Persona" for="idpersonas" />
+                        <p:selectOneMenu id="idpersonas" value="#{usuariosController.selected.idpersonas}" required="true" requiredMessage="Debe seleccionar un persona para asociar este usuario">
+                            <f:selectItem itemLabel="Seleccione una opción"/>
                             <f:selectItems value="#{personasController.itemsAvailableSelectOne}"
+                                           itemLabel="#{idpersonasItem.nombres} #{idpersonasItem.apellidos} (#{idpersonasItem.numerodocumento})" 
                                            var="idpersonasItem"
                                            itemValue="#{idpersonasItem}"/>
                         </p:selectOneMenu>
@@ -38,3 +40,11 @@
 
     </ui:composition>
 </html>
+
+
+    <!--<p:outputLabel value="{bundle.EditUsuariosLabel_idusuario}" for="idusuario" /> -->
+     <!--<p:inputText id="idusuario" value="{usuariosController.selected.idusuario}" title="{bundle.EditUsuariosTitle_idusuario}" required="true" requiredMessage="{bundle.EditUsuariosRequiredMessage_idusuario}"/> -->
+     
+     
+     <!--  <p:outputLabel value="{bundle.EditUsuariosLabel_fechacreacion}" for="fechacreacion" />
+             <p:calendar id="fechacreacion" pattern="MM/dd/yyyy HH:mm:ss" value="{usuariosController.selected.fechacreacion}" title="{bundle.EditUsuariosTitle_fechacreacion}" required="true" requiredMessage="{bundle.EditUsuariosRequiredMessage_fechacreacion}" showOn="button"/>-->

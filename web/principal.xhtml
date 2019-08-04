@@ -15,15 +15,15 @@
 
     <h:body>
 
-        <p:growl id="growl" life="3000" />
+        <p:growl id="growl" life="5000" />
 
         <p:layout fullPage="true">
-            <p:layoutUnit position="north" size="65" header="Centauros Bank">
+            <p:layoutUnit position="north" size="65" header="Centauros Bank (Automatización Solicitudes Productos Financieros)">
                 <h:form id="menuForm">
                     <p:menubar>
                         <p:menuitem value="#{bundle.Home}" outcome="/principal" icon="ui-icon-home"/>
                         <p:submenu label="Modulos">                           
-                            <p:menuitem value="Personas" outcome="/personas/List.xhtml" />                            
+                            <p:menuitem value="Personas - Clientes" outcome="/personas/List.xhtml" />                            
                         </p:submenu>
                         <p:submenu label="Maestros">
                             <p:menuitem value="Ciudad" outcome="/ciudad/List.xhtml" />
@@ -37,16 +37,28 @@
                 </h:form>
             </p:layoutUnit>
 
-            <p:layoutUnit position="south" size="60">
-                <ui:insert name="footer"/>
-                <p align="center">  © Amilkar MB 2019</p> 
-            </p:layoutUnit>
-
-            <p:layoutUnit position="center">
-                <ui:insert name="body"/>
+      <p:layoutUnit position="center">
+                                        
+  <p:panel id="horizontal" style="background-color: #dce8f1" header="Centauros Bank" toggleable="true" toggleOrientation="vertical">
+        <h:panelGrid columns="3" cellpadding="1"  >
+           
+            <h:column>
+                <img src="../Recursos/Imagenes/banner.jpg" width="35%" height="27%"  style="padding-left: 60%; border-radius: 2em 1em 4em 3em" align="center" />
+            </h:column>
+                       
+        </h:panelGrid>
+       
+         <ui:insert name="body"/>
+         
+           </p:panel>
                    
             </p:layoutUnit>
 
+               <p:layoutUnit position="south" size="50">
+                <ui:insert name="footer"/>
+                <p align="center">  © Amilkar MB 2019</p> 
+            </p:layoutUnit>
+            
         </p:layout>
 
     </h:body>

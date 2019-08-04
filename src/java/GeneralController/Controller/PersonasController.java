@@ -5,6 +5,7 @@ import GeneralController.Controller.util.JsfUtil;
 import GeneralController.Controller.util.JsfUtil.PersistAction;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -85,6 +86,14 @@ public class PersonasController implements Serializable {
             setEmbeddableKeys();
             try {
                 if (persistAction != PersistAction.DELETE) {
+                    Date fActual = new Date();
+                    String action = persistAction.name();
+                    if(action.equals("CREATE")){
+                       selected.setFechacreacion(fActual);
+                    }else {
+                       selected.setFechamodificacion(fActual);
+                    }
+                    
                     getFacade().edit(selected);
                 } else {
                     getFacade().remove(selected);
