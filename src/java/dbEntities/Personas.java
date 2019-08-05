@@ -128,6 +128,8 @@ public class Personas implements Serializable {
     private TipoDocumento idtipodocumento;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idpersonas")
     private List<Usuarios> usuariosList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idpersonas")
+    private List<Credito> creditoList;
 
     public Personas() {
     }
@@ -303,6 +305,15 @@ public class Personas implements Serializable {
         this.usuariosList = usuariosList;
     }
 
+    @XmlTransient
+    public List<Credito> getCreditosList() {
+        return creditoList;
+    }
+
+    public void setCreditoList(List<Credito> creditoList) {
+        this.creditoList = creditoList;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;

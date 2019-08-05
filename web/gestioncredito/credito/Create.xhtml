@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
+    <ui:composition>
+
+        <p:dialog id="CreditoCreateDlg" widgetVar="CreditoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="Nuevo Crédito">
+            <h:form id="CreditoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="4" rendered="#{creditoController.selected != null}">
+                                               
+                        <p:outputLabel value="Persona Asociada" for="idpersonas" />
+                        <p:selectOneMenu id="idpersonas" value="#{creditoController.selected.idpersonas}" required="true" requiredMessage="#{bundle.EditCreditoRequiredMessage_idpersonas}">
+                            <f:selectItem itemLabel="Seleccione una opción"/>
+                            <f:selectItems value="#{personasController.itemsAvailableSelectOne}"
+                                           var="idpersonasItem"
+                                           itemLabel="#{idpersonasItem.nombres} #{idpersonasItem.apellidos} (#{idpersonasItem.numerodocumento})"
+                                           itemValue="#{idpersonasItem}"/>
+                             <f:ajax render="documento" event="change" listener="#{creditoController.listenerDocumento}" execute="@this"/>
+                            
+                        </p:selectOneMenu>
+                                               
+                         <p:outputLabel value="Documento" for="documento" />
+                         <p:inputText id="documento" value="#{creditoController.result}" title="Número Documento" />
+                         
+                        <p:outputLabel value="Nombre Empresa" for="nombreempresa" />
+                        <p:inputText id="nombreempresa" value="#{creditoController.selected.nombreempresa}" title="#{bundleCredito.CreateCreditoTitle_nombreempresa}" />
+                        <p:outputLabel value="Fecha Ingreso" for="fechaingreso" />
+                        <p:calendar id="fechaingreso" pattern="dd/MM/yyyy HH:mm:ss" value="#{creditoController.selected.fechaingreso}" title="#{bundleCredito.EditCreditoTitle_fechaingreso}"  showOn="button"/>
+                        <p:outputLabel value="Teléfono Empresa" for="telefonoempresa" />
+                        <p:inputText id="telefonoempresa" value="#{creditoController.selected.telefonoempresa}" title="#{bundleCredito.CreateCreditoTitle_telefonoempresa}" />
+                        <p:outputLabel value="Dirección Empresa" for="direccionempresa" />
+                        <p:inputText id="direccionempresa" value="#{creditoController.selected.direccionempresa}" title="#{bundleCredito.CreateCreditoTitle_direccionempresa}" />
+                                                                       
+                        <p:outputLabel value="Ocupación" for="idocupacion" />
+                        <p:selectOneMenu id="idocupacion" value="#{creditoController.selected.idocupacion}" required="true" requiredMessage="#{bundleCredito.EditCreditoRequiredMessage_idocupacion}">
+                            <f:selectItems value="#{ocupacionController.itemsAvailableSelectOne}"
+                                           itemLabel="#{idocupacionItem.descripcion}"
+                                           var="idocupacionItem"
+                                           itemValue="#{idocupacionItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Tipo Contrato" for="idtipocontrato" />
+                        <p:selectOneMenu id="idtipocontrato" value="#{creditoController.selected.idtipocontrato}" >
+                            <f:selectItems value="#{tipoContratoController.itemsAvailableSelectOne}"
+                                           itemLabel="#{idtipocontratoItem.descripcion}"
+                                           var="idtipocontratoItem"
+                                           itemValue="#{idtipocontratoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Tipo Crédito" for="idtipocredito" />
+                        <p:selectOneMenu id="idtipocredito" value="#{creditoController.selected.idtipocredito}" required="true" requiredMessage="#{bundleCredito.EditCreditoRequiredMessage_idtipocredito}">
+                            <f:selectItems value="#{tipoCreditoController.itemsAvailableSelectOne}"
+                                           itemLabel="#{idtipocreditoItem.descripcion}"
+                                           var="idtipocreditoItem"
+                                           itemValue="#{idtipocreditoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{creditoController.create}" value="#{bundleCredito.Save}" update="display,:CreditoListForm:datalist,:growl" oncomplete="handleSubmit(args,'CreditoCreateDialog');"/>
+                    <p:commandButton value="#{bundleCredito.Cancel}" onclick="CreditoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
+

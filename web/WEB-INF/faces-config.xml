@@ -8,6 +8,10 @@
             <base-name>/Bundle</base-name>
             <var>bundle</var>
         </resource-bundle>
+        <resource-bundle>
+            <base-name>/BundleCredito</base-name>
+            <var>bundleCredito</var>
+        </resource-bundle>
     </application>
     <navigation-rule>
         <from-view-id>/login.xhtml</from-view-id>

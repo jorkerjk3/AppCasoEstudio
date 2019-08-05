@@ -1,8 +1,9 @@
 package GeneralController.Controller;
 
-import dbEntities.Personas;
+import dbEntities.Credito;
 import GeneralController.Controller.util.JsfUtil;
 import GeneralController.Controller.util.JsfUtil.PersistAction;
+import dbEntities.Personas;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -18,63 +19,77 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import javax.faces.event.AjaxBehaviorEvent;
 
-@Named("personasController")
+@Named("creditoController")
 @SessionScoped
-public class PersonasController implements Serializable {
+public class CreditoController implements Serializable {
 
     @EJB
-    private GeneralController.Controller.PersonasFacade ejbFacade;
-    private List<Personas> items = null;
-    private Personas selected;
+    private GeneralController.Controller.CreditoFacade ejbFacade;
+    private List<Credito> items = null;
+    private Credito selected;
+    private String documentoResult;
    
-    public PersonasController() {
+    
+    public CreditoController() {
     }
-   
+
+    public Credito getSelected() {
+        return selected;
+    }
+
+    public void setSelected(Credito selected) {
+        this.selected = selected;
+    }
+
     protected void setEmbeddableKeys() {
     }
 
     protected void initializeEmbeddableKey() {
     }
 
-    private PersonasFacade getFacade() {
+    private CreditoFacade getFacade() {
         return ejbFacade;
     }
 
-    public Personas getSelected() {
-        return selected;
-    }
-
-    public void setSelected(Personas selected) {
-        this.selected = selected;
-    }
-    
-    public Personas prepareCreate() {
-        selected = new Personas();
+    public Credito prepareCreate() {
+        selected = new Credito();
         initializeEmbeddableKey();
         return selected;
     }
     
+    public void listenerDocumento(AjaxBehaviorEvent evento){    
+      //resultado = "called by " + evento.getComponent().getClass().getName();      
+      Credito pers = selected;  
+      documentoResult = selected.getIdpersonas().getNumerodocumento();
+     
+    }
+     
+    public String getResult(){
+       return documentoResult;
+    }
+    
     public void create() {
-        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("PersonasCreated"));
+        persist(PersistAction.CREATE, ResourceBundle.getBundle("/BundleCredito").getString("CreditoCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
     public void update() {
-        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("PersonasUpdated"));
+        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/BundleCredito").getString("CreditoUpdated"));
     }
 
     public void destroy() {
-        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("PersonasDeleted"));
+        persist(PersistAction.DELETE, ResourceBundle.getBundle("/BundleCredito").getString("CreditoDeleted"));
         if (!JsfUtil.isValidationFailed()) {
             selected = null; // Remove selection
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
-    public List<Personas> getItems() {
+    public List<Credito> getItems() {
         if (items == null) {
             items = getFacade().findAll();
         }
@@ -90,6 +105,8 @@ public class PersonasController implements Serializable {
                     String action = persistAction.name();
                     if(action.equals("CREATE")){
                        selected.setFechacreacion(fActual);
+                       selected.setEstado(true);
+                       selected.setEstadocredito(1);//pre aprobado
                     }else {
                        selected.setFechamodificacion(fActual);
                     }
@@ -108,38 +125,38 @@ public class PersonasController implements Serializable {
                 if (msg.length() > 0) {
                     JsfUtil.addErrorMessage(msg);
                 } else {
-                    JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+                    JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/BundleCredito").getString("PersistenceErrorOccured"));
                 }
             } catch (Exception ex) {
                 Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
-                JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+                JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/BundleCredito").getString("PersistenceErrorOccured"));
             }
         }
     }
 
-    public Personas getPersonas(java.lang.Integer id) {
+    public Credito getCredito(java.lang.Integer id) {
         return getFacade().find(id);
     }
 
-    public List<Personas> getItemsAvailableSelectMany() {
+    public List<Credito> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
 
-    public List<Personas> getItemsAvailableSelectOne() {
+    public List<Credito> getItemsAvailableSelectOne() {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass = Personas.class)
-    public static class PersonasControllerConverter implements Converter {
+    @FacesConverter(forClass = Credito.class)
+    public static class CreditoControllerConverter implements Converter {
 
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            PersonasController controller = (PersonasController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "personasController");
-            return controller.getPersonas(getKey(value));
+            CreditoController controller = (CreditoController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "creditoController");
+            return controller.getCredito(getKey(value));
         }
 
         java.lang.Integer getKey(String value) {
@@ -159,11 +176,11 @@ public class PersonasController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Personas) {
-                Personas o = (Personas) object;
-                return getStringKey(o.getIdpersonas());
+            if (object instanceof Credito) {
+                Credito o = (Credito) object;
+                return getStringKey(o.getIdcredito());
             } else {
-                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Personas.class.getName()});
+                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Credito.class.getName()});
                 return null;
             }
         }

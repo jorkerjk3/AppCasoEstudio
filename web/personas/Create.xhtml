@@ -11,7 +11,7 @@
         <p:dialog id="PersonasCreateDlg" widgetVar="PersonasCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="Crear Persona">
             <h:form id="PersonasCreateForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{personasController.selected != null}">
+                    <p:panelGrid columns="4" rendered="#{personasController.selected != null}">
                        
                         <p:outputLabel value="Nombres" for="nombres" />
                         <p:inputText id="nombres" value="#{personasController.selected.nombres}" title="#{bundle.CreatePersonasTitle_nombres}" required="true" requiredMessage="#{bundle.CreatePersonasRequiredMessage_nombres}"/>

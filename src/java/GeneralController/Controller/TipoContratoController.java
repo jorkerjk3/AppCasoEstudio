@@ -1,11 +1,10 @@
 package GeneralController.Controller;
 
-import dbEntities.Personas;
+import dbEntities.TipoContrato;
 import GeneralController.Controller.util.JsfUtil;
 import GeneralController.Controller.util.JsfUtil.PersistAction;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -19,62 +18,62 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@Named("personasController")
+@Named("tipoContratoController")
 @SessionScoped
-public class PersonasController implements Serializable {
+public class TipoContratoController implements Serializable {
 
     @EJB
-    private GeneralController.Controller.PersonasFacade ejbFacade;
-    private List<Personas> items = null;
-    private Personas selected;
-   
-    public PersonasController() {
+    private GeneralController.Controller.TipoContratoFacade ejbFacade;
+    private List<TipoContrato> items = null;
+    private TipoContrato selected;
+
+    public TipoContratoController() {
     }
-   
+
+    public TipoContrato getSelected() {
+        return selected;
+    }
+
+    public void setSelected(TipoContrato selected) {
+        this.selected = selected;
+    }
+
     protected void setEmbeddableKeys() {
     }
 
     protected void initializeEmbeddableKey() {
     }
 
-    private PersonasFacade getFacade() {
+    private TipoContratoFacade getFacade() {
         return ejbFacade;
     }
 
-    public Personas getSelected() {
-        return selected;
-    }
-
-    public void setSelected(Personas selected) {
-        this.selected = selected;
-    }
-    
-    public Personas prepareCreate() {
-        selected = new Personas();
+    public TipoContrato prepareCreate() {
+        selected = new TipoContrato();
         initializeEmbeddableKey();
         return selected;
     }
-    
+
     public void create() {
-        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("PersonasCreated"));
+        persist(PersistAction.CREATE, ResourceBundle.getBundle("/BundleCredito").getString("TipoContratoCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
     public void update() {
-        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("PersonasUpdated"));
+        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/BundleCredito").getString("TipoContratoUpdated"));
     }
 
     public void destroy() {
-        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("PersonasDeleted"));
+        persist(PersistAction.DELETE, ResourceBundle.getBundle("/BundleCredito").getString("TipoContratoDeleted"));
         if (!JsfUtil.isValidationFailed()) {
             selected = null; // Remove selection
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
-    public List<Personas> getItems() {
+    public List<TipoContrato> getItems() {
         if (items == null) {
             items = getFacade().findAll();
         }
@@ -86,14 +85,6 @@ public class PersonasController implements Serializable {
             setEmbeddableKeys();
             try {
                 if (persistAction != PersistAction.DELETE) {
-                    Date fActual = new Date();
-                    String action = persistAction.name();
-                    if(action.equals("CREATE")){
-                       selected.setFechacreacion(fActual);
-                    }else {
-                       selected.setFechamodificacion(fActual);
-                    }
-                    
                     getFacade().edit(selected);
                 } else {
                     getFacade().remove(selected);
@@ -108,38 +99,38 @@ public class PersonasController implements Serializable {
                 if (msg.length() > 0) {
                     JsfUtil.addErrorMessage(msg);
                 } else {
-                    JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+                    JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/BundleCredito").getString("PersistenceErrorOccured"));
                 }
             } catch (Exception ex) {
                 Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
-                JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+                JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/BundleCredito").getString("PersistenceErrorOccured"));
             }
         }
     }
 
-    public Personas getPersonas(java.lang.Integer id) {
+    public TipoContrato getTipoContrato(java.lang.Integer id) {
         return getFacade().find(id);
     }
 
-    public List<Personas> getItemsAvailableSelectMany() {
+    public List<TipoContrato> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
 
-    public List<Personas> getItemsAvailableSelectOne() {
+    public List<TipoContrato> getItemsAvailableSelectOne() {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass = Personas.class)
-    public static class PersonasControllerConverter implements Converter {
+    @FacesConverter(forClass = TipoContrato.class)
+    public static class TipoContratoControllerConverter implements Converter {
 
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            PersonasController controller = (PersonasController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "personasController");
-            return controller.getPersonas(getKey(value));
+            TipoContratoController controller = (TipoContratoController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "tipoContratoController");
+            return controller.getTipoContrato(getKey(value));
         }
 
         java.lang.Integer getKey(String value) {
@@ -159,11 +150,11 @@ public class PersonasController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Personas) {
-                Personas o = (Personas) object;
-                return getStringKey(o.getIdpersonas());
+            if (object instanceof TipoContrato) {
+                TipoContrato o = (TipoContrato) object;
+                return getStringKey(o.getIdtipocontrato());
             } else {
-                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Personas.class.getName()});
+                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), TipoContrato.class.getName()});
                 return null;
             }
         }

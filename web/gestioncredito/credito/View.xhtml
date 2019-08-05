@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CreditoViewDlg" widgetVar="CreditoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundleCredito.ViewCreditoTitle}">
+            <h:form id="CreditoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{creditoController.selected != null}">
+                        <h:outputText value="#{bundleCredito.ViewCreditoLabel_idcredito}"/>
+                        <h:outputText value="#{creditoController.selected.idcredito}" title="#{bundleCredito.ViewCreditoTitle_idcredito}"/>
+                        <h:outputText value="#{bundleCredito.ViewCreditoLabel_nombreempresa}"/>
+                        <h:outputText value="#{creditoController.selected.nombreempresa}" title="#{bundleCredito.ViewCreditoTitle_nombreempresa}"/>
+                        <h:outputText value="#{bundleCredito.ViewCreditoLabel_fechaingreso}"/>
+                        <h:outputText value="#{creditoController.selected.fechaingreso}" title="#{bundleCredito.ViewCreditoTitle_fechaingreso}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundleCredito.ViewCreditoLabel_telefonoempresa}"/>
+                        <h:outputText value="#{creditoController.selected.telefonoempresa}" title="#{bundleCredito.ViewCreditoTitle_telefonoempresa}"/>
+                        <h:outputText value="#{bundleCredito.ViewCreditoLabel_direccionempresa}"/>
+                        <h:outputText value="#{creditoController.selected.direccionempresa}" title="#{bundleCredito.ViewCreditoTitle_direccionempresa}"/>
+                        <h:outputText value="#{bundleCredito.ViewCreditoLabel_estadocredito}"/>
+                        <h:outputText value="#{creditoController.selected.estadocredito}" title="#{bundleCredito.ViewCreditoTitle_estadocredito}"/>
+                        <h:outputText value="#{bundleCredito.ViewCreditoLabel_estado}"/>
+                        <p:selectBooleanCheckbox value="#{creditoController.selected.estado}" disabled="true"/>
+                        <h:outputText value="#{bundleCredito.ViewCreditoLabel_fechacreacion}"/>
+                        <h:outputText value="#{creditoController.selected.fechacreacion}" title="#{bundleCredito.ViewCreditoTitle_fechacreacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundleCredito.ViewCreditoLabel_fechamodificacion}"/>
+                        <h:outputText value="#{creditoController.selected.fechamodificacion}" title="#{bundleCredito.ViewCreditoTitle_fechamodificacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundleCredito.ViewCreditoLabel_idocupacion}"/>
+                        <h:outputText value="#{creditoController.selected.idocupacion}" title="#{bundleCredito.ViewCreditoTitle_idocupacion}"/>
+                        <h:outputText value="#{bundleCredito.ViewCreditoLabel_idtipocontrato}"/>
+                        <h:outputText value="#{creditoController.selected.idtipocontrato}" title="#{bundleCredito.ViewCreditoTitle_idtipocontrato}"/>
+                        <h:outputText value="#{bundleCredito.ViewCreditoLabel_idtipocredito}"/>
+                        <h:outputText value="#{creditoController.selected.idtipocredito}" title="#{bundleCredito.ViewCreditoTitle_idtipocredito}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundleCredito.Close}" onclick="CreditoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
