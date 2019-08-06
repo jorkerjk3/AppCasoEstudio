@@ -47,6 +47,7 @@ public class TipoCredito implements Serializable {
     @Size(min = 1, max = 100)
     @Column(name = "Descripcion")
     private String descripcion;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idtipocredito")
     private List<Credito> creditoList;
 

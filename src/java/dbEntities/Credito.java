@@ -83,14 +83,17 @@ public class Credito implements Serializable {
     @JoinColumn(name = "Id_ocupacion", referencedColumnName = "Id_ocupacion")
     @ManyToOne(optional = false)
     private Ocupacion idocupacion;
+    
     @JoinColumn(name = "Id_tipo_contrato", referencedColumnName = "Id_tipo_contrato")
     @ManyToOne
     private TipoContrato idtipocontrato;
+    
     @JoinColumn(name = "Id_tipo_credito", referencedColumnName = "Id_tipo_credito")
     @ManyToOne(optional = false)
     private TipoCredito idtipocredito;
+    
     @JoinColumn(name = "Id_personas", referencedColumnName = "Id_personas")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
     private Personas idpersonas;
 
     public Credito() {
@@ -204,13 +207,14 @@ public class Credito implements Serializable {
         this.idtipocredito = idtipocredito;
     }
 
-    public Personas getIdpersonas() {
+   public Personas getIdpersonas() {
         return idpersonas;
     }
 
     public void setIdpersonas(Personas idpersonas) {
         this.idpersonas = idpersonas;
     }
+
     
     @Override
     public int hashCode() {

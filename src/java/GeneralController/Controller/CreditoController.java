@@ -3,8 +3,8 @@ package GeneralController.Controller;
 import dbEntities.Credito;
 import GeneralController.Controller.util.JsfUtil;
 import GeneralController.Controller.util.JsfUtil.PersistAction;
+import dbEntities.Estadocivil;
 import dbEntities.Personas;
-
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -27,10 +27,23 @@ public class CreditoController implements Serializable {
 
     @EJB
     private GeneralController.Controller.CreditoFacade ejbFacade;
+ 
+    
     private List<Credito> items = null;
+    private Personas personaObj = null;
     private Credito selected;
     private String documentoResult;
-   
+    private Integer idtipodocumento;
+
+    public Integer getIdtipodocumento() {
+        
+        return idtipodocumento;
+    }
+
+    public void setIdtipodocumento(Integer idtipodocumento) {
+        this.idtipodocumento = idtipodocumento;
+    }
+
     
     public CreditoController() {
     }
@@ -52,9 +65,10 @@ public class CreditoController implements Serializable {
     private CreditoFacade getFacade() {
         return ejbFacade;
     }
-
+   
     public Credito prepareCreate() {
         selected = new Credito();
+       
         initializeEmbeddableKey();
         return selected;
     }
@@ -69,7 +83,8 @@ public class CreditoController implements Serializable {
     public String getResult(){
        return documentoResult;
     }
-    
+   
+   
     public void create() {
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/BundleCredito").getString("CreditoCreated"));
         if (!JsfUtil.isValidationFailed()) {
@@ -107,6 +122,8 @@ public class CreditoController implements Serializable {
                        selected.setFechacreacion(fActual);
                        selected.setEstado(true);
                        selected.setEstadocredito(1);//pre aprobado
+                       selected.setFechamodificacion(fActual);
+                       
                     }else {
                        selected.setFechamodificacion(fActual);
                     }
