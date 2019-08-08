@@ -14,7 +14,7 @@
                     <p:panelGrid columns="2" rendered="#{creditoController.selected != null}">
                        
                         <p:outputLabel value="Persona Asociada" for="idpersonas" />
-                        <p:selectOneMenu id="idpersonas" value="#{creditoController.selected.idpersonas}" required="true" requiredMessage="#{bundle.EditCreditoRequiredMessage_idpersonas}">
+                        <p:selectOneMenu id="idpersonas" value="#{creditoController.selected.idpersonas}" required="true" disabled="true" requiredMessage="#{bundle.EditCreditoRequiredMessage_idpersonas}">
                             <f:selectItems value="#{personasController.itemsAvailableSelectOne}"
                                            itemLabel="#{idpersonasItem.nombres} #{idpersonasItem.apellidos} (#{idpersonasItem.numerodocumento})"
                                            var="idpersonasItem"
