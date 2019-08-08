@@ -16,8 +16,8 @@
                         <h:outputText value="#{ciudadController.selected.idciudad}" title="#{bundle.ViewCiudadTitle_idciudad}"/>
                         <h:outputText value="#{bundle.ViewCiudadLabel_nombreciudad}"/>
                         <h:outputText value="#{ciudadController.selected.nombreciudad}" title="#{bundle.ViewCiudadTitle_nombreciudad}"/>
-                        <h:outputText value="#{bundle.ViewCiudadLabel_iddepartamento}"/>
-                        <h:outputText value="#{ciudadController.selected.iddepartamento}" title="#{bundle.ViewCiudadTitle_iddepartamento}"/>
+                        <h:outputText value="Departamento"/>
+                        <h:outputText value="#{ciudadController.selected.iddepartamento.nombredepartamento}" title="#{bundle.ViewCiudadTitle_iddepartamento}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="CiudadViewDialog.hide()"/>
                 </h:panelGroup>

@@ -12,8 +12,7 @@
             <h:form id="TipoContratoEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{tipoContratoController.selected != null}">
-                        <p:outputLabel value="#{bundleCredito.EditTipoContratoLabel_idtipocontrato}" for="idtipocontrato" />
-                        <p:inputText id="idtipocontrato" value="#{tipoContratoController.selected.idtipocontrato}" title="#{bundleCredito.EditTipoContratoTitle_idtipocontrato}" required="true" requiredMessage="#{bundleCredito.EditTipoContratoRequiredMessage_idtipocontrato}"/>
+                        
                         <p:outputLabel value="#{bundleCredito.EditTipoContratoLabel_descripcion}" for="descripcion" />
                         <p:inputText id="descripcion" value="#{tipoContratoController.selected.descripcion}" title="#{bundleCredito.EditTipoContratoTitle_descripcion}" required="true" requiredMessage="#{bundleCredito.EditTipoContratoRequiredMessage_descripcion}"/>
                     </p:panelGrid>

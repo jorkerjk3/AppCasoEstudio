@@ -12,8 +12,6 @@
             <h:form id="CiudadEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{ciudadController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditCiudadLabel_idciudad}" for="idciudad" />
-                        <p:inputText id="idciudad" value="#{ciudadController.selected.idciudad}" title="#{bundle.EditCiudadTitle_idciudad}" required="true" requiredMessage="#{bundle.EditCiudadRequiredMessage_idciudad}"/>
                         <p:outputLabel value="#{bundle.EditCiudadLabel_nombreciudad}" for="nombreciudad" />
                         <p:inputText id="nombreciudad" value="#{ciudadController.selected.nombreciudad}" title="#{bundle.EditCiudadTitle_nombreciudad}" required="true" requiredMessage="#{bundle.EditCiudadRequiredMessage_nombreciudad}"/>
                         <p:outputLabel value="#{bundle.EditCiudadLabel_iddepartamento}" for="iddepartamento" />
@@ -21,6 +19,7 @@
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{departamentoController.itemsAvailableSelectOne}"
                                            var="iddepartamentoItem"
+                                           itemLabel="#{iddepartamentoItem.nombredepartamento}"
                                            itemValue="#{iddepartamentoItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>

@@ -47,8 +47,20 @@
                         
                         <h:outputText value="Rol"/>                        
                         <h:outputText value="#{personasController.selected.idtipopersona}" title="Rol"/>
+                       
+                        <h:outputText value="Estado"/>
+                        <p:selectBooleanCheckbox value="#{personasController.selected.estado}" disabled="true"/>
                         
-                        <h:outputText value="Fecha Creación"/>                        
+                        <h:outputText value="Ciudad"/>
+                        <h:outputText value="#{personasController.selected.idciudad.nombreciudad}" title="Ciudad"/>
+                        
+                        <h:outputText value="Estado Civil"/>
+                        <h:outputText value="#{personasController.selected.idestadocivil.descripcion}" title="Estado Civil"/>
+                        
+                        <h:outputText value="Nivel Académico"/>
+                        <h:outputText value="#{personasController.selected.idnivelacademico.descripcion}" title="Nivel Académico"/>
+                        
+                         <h:outputText value="Fecha Creación"/>                        
                         <h:outputText value="#{personasController.selected.fechacreacion}" title="Fecha Creación">
                             <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
                         </h:outputText>
@@ -56,18 +68,6 @@
                         <h:outputText value="#{personasController.selected.fechamodificacion}" title="Fecha Modificación">
                             <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
                         </h:outputText>
-                        
-                        <h:outputText value="Estado"/>
-                        <p:selectBooleanCheckbox value="#{personasController.selected.estado}" disabled="true"/>
-                        
-                        <h:outputText value="Ciudad"/>
-                        <h:outputText value="#{personasController.selected.idciudad}" title="Ciudad"/>
-                        
-                        <h:outputText value="Estado Civil"/>
-                        <h:outputText value="#{personasController.selected.idestadocivil}" title="Estado Civil"/>
-                        
-                        <h:outputText value="Nivel Académico"/>
-                        <h:outputText value="#{personasController.selected.idnivelacademico}" title="Nivel Académico"/>
                         
                       
                     </p:panelGrid>

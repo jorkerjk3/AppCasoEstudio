@@ -14,34 +14,43 @@
                     <p:panelGrid columns="2" rendered="#{creditoController.selected != null}">
                         <h:outputText value="#{bundleCredito.ViewCreditoLabel_idcredito}"/>
                         <h:outputText value="#{creditoController.selected.idcredito}" title="#{bundleCredito.ViewCreditoTitle_idcredito}"/>
-                        <h:outputText value="#{bundleCredito.ViewCreditoLabel_nombreempresa}"/>
-                        <h:outputText value="#{creditoController.selected.nombreempresa}" title="#{bundleCredito.ViewCreditoTitle_nombreempresa}"/>
-                        <h:outputText value="#{bundleCredito.ViewCreditoLabel_fechaingreso}"/>
-                        <h:outputText value="#{creditoController.selected.fechaingreso}" title="#{bundleCredito.ViewCreditoTitle_fechaingreso}">
-                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        
+                        <h:outputText value="Persona Asociada"/>
+                        <h:outputText value="#{creditoController.selected.idpersonas.nombres} #{creditoController.selected.idpersonas.apellidos}" title="Persona Asociada"/>
+                        
+                        <h:outputText value="Tipo Documento"/>
+                        <h:outputText value="#{creditoController.selected.idpersonas.idtipodocumento.descripcion}" title="Tipo Documento"/>
+                        
+                        <h:outputText value="Documento"/>
+                        <h:outputText value="#{creditoController.selected.idpersonas.numerodocumento}" title="Documento"/>
+                        
+                        <h:outputText value="Tipo Credito"/>
+                        <h:outputText value="#{creditoController.selected.idtipocredito.descripcion}" title="Tipo Crédito"/>
+                        
+                        <h:outputText value="Estado del Credito"/>
+                        <h:outputText value="#{creditoController.selected.estadocredito eq 1?'Pre-Aprobado':'Aprobado'}" title="#{bundleCredito.ViewCreditoTitle_estadocredito}"/>
+                        
+                        <h:outputText value="Nombre Empresa"/>
+                        <h:outputText value="#{creditoController.selected.nombreempresa}" title="Nombre Empresa"/>
+                        <h:outputText value="Fecha Ingreso"/>
+                        <h:outputText value="#{creditoController.selected.fechaingreso}" title="Fecha Ingreso">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
                         </h:outputText>
-                        <h:outputText value="#{bundleCredito.ViewCreditoLabel_telefonoempresa}"/>
-                        <h:outputText value="#{creditoController.selected.telefonoempresa}" title="#{bundleCredito.ViewCreditoTitle_telefonoempresa}"/>
-                        <h:outputText value="#{bundleCredito.ViewCreditoLabel_direccionempresa}"/>
-                        <h:outputText value="#{creditoController.selected.direccionempresa}" title="#{bundleCredito.ViewCreditoTitle_direccionempresa}"/>
-                        <h:outputText value="#{bundleCredito.ViewCreditoLabel_estadocredito}"/>
-                        <h:outputText value="#{creditoController.selected.estadocredito}" title="#{bundleCredito.ViewCreditoTitle_estadocredito}"/>
-                        <h:outputText value="#{bundleCredito.ViewCreditoLabel_estado}"/>
-                        <p:selectBooleanCheckbox value="#{creditoController.selected.estado}" disabled="true"/>
-                        <h:outputText value="#{bundleCredito.ViewCreditoLabel_fechacreacion}"/>
+                        <h:outputText value="Teléfono Empresa"/>
+                        <h:outputText value="#{creditoController.selected.telefonoempresa}" title="Teléfono Empresa"/>
+                        <h:outputText value="Dirección Empresa"/>
+                        <h:outputText value="#{creditoController.selected.direccionempresa}" title="Dirección Empresa"/>
+                                              
+                        <h:outputText value="Ocupación"/>
+                        <h:outputText value="#{creditoController.selected.idocupacion.descripcion}" title="Ocupación"/>
+                        <h:outputText value="Tipo Contrato"/>
+                        <h:outputText value="#{creditoController.selected.idtipocontrato.descripcion}" title="Tipo Contrato"/>
+                                              
+                        <h:outputText value="Fecha Creación"/>
                         <h:outputText value="#{creditoController.selected.fechacreacion}" title="#{bundleCredito.ViewCreditoTitle_fechacreacion}">
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                         </h:outputText>
-                        <h:outputText value="#{bundleCredito.ViewCreditoLabel_fechamodificacion}"/>
-                        <h:outputText value="#{creditoController.selected.fechamodificacion}" title="#{bundleCredito.ViewCreditoTitle_fechamodificacion}">
-                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                        </h:outputText>
-                        <h:outputText value="#{bundleCredito.ViewCreditoLabel_idocupacion}"/>
-                        <h:outputText value="#{creditoController.selected.idocupacion}" title="#{bundleCredito.ViewCreditoTitle_idocupacion}"/>
-                        <h:outputText value="#{bundleCredito.ViewCreditoLabel_idtipocontrato}"/>
-                        <h:outputText value="#{creditoController.selected.idtipocontrato}" title="#{bundleCredito.ViewCreditoTitle_idtipocontrato}"/>
-                        <h:outputText value="#{bundleCredito.ViewCreditoLabel_idtipocredito}"/>
-                        <h:outputText value="#{creditoController.selected.idtipocredito}" title="#{bundleCredito.ViewCreditoTitle_idtipocredito}"/>
+                        
                     </p:panelGrid>
                     <p:commandButton value="#{bundleCredito.Close}" onclick="CreditoViewDialog.hide()"/>
                 </h:panelGroup>

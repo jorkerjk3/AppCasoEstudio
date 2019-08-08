@@ -12,8 +12,7 @@
             <h:form id="DepartamentoCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{departamentoController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateDepartamentoLabel_iddepartamento}" for="iddepartamento" />
-                        <p:inputText id="iddepartamento" value="#{departamentoController.selected.iddepartamento}" title="#{bundle.CreateDepartamentoTitle_iddepartamento}" required="true" requiredMessage="#{bundle.CreateDepartamentoRequiredMessage_iddepartamento}"/>
+                       
                         <p:outputLabel value="#{bundle.CreateDepartamentoLabel_nombredepartamento}" for="nombredepartamento" />
                         <p:inputText id="nombredepartamento" value="#{departamentoController.selected.nombredepartamento}" title="#{bundle.CreateDepartamentoTitle_nombredepartamento}" required="true" requiredMessage="#{bundle.CreateDepartamentoRequiredMessage_nombredepartamento}"/>
                     </p:panelGrid>

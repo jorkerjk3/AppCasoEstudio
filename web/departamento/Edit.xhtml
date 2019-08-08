@@ -11,9 +11,7 @@
         <p:dialog id="DepartamentoEditDlg" widgetVar="DepartamentoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditDepartamentoTitle}">
             <h:form id="DepartamentoEditForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{departamentoController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditDepartamentoLabel_iddepartamento}" for="iddepartamento" />
-                        <p:inputText id="iddepartamento" value="#{departamentoController.selected.iddepartamento}" title="#{bundle.EditDepartamentoTitle_iddepartamento}" required="true" requiredMessage="#{bundle.EditDepartamentoRequiredMessage_iddepartamento}"/>
+                    <p:panelGrid columns="2" rendered="#{departamentoController.selected != null}">                       
                         <p:outputLabel value="#{bundle.EditDepartamentoLabel_nombredepartamento}" for="nombredepartamento" />
                         <p:inputText id="nombredepartamento" value="#{departamentoController.selected.nombredepartamento}" title="#{bundle.EditDepartamentoTitle_nombredepartamento}" required="true" requiredMessage="#{bundle.EditDepartamentoRequiredMessage_nombredepartamento}"/>
                     </p:panelGrid>

@@ -12,8 +12,7 @@
             <h:form id="TipoDocumentoEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{tipoDocumentoController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditTipoDocumentoLabel_idtipodocumento}" for="idtipodocumento" />
-                        <p:inputText id="idtipodocumento" value="#{tipoDocumentoController.selected.idtipodocumento}" title="#{bundle.EditTipoDocumentoTitle_idtipodocumento}" required="true" requiredMessage="#{bundle.EditTipoDocumentoRequiredMessage_idtipodocumento}"/>
+                       
                         <p:outputLabel value="#{bundle.EditTipoDocumentoLabel_descripcion}" for="descripcion" />
                         <p:inputText id="descripcion" value="#{tipoDocumentoController.selected.descripcion}" title="#{bundle.EditTipoDocumentoTitle_descripcion}" required="true" requiredMessage="#{bundle.EditTipoDocumentoRequiredMessage_descripcion}"/>
                     </p:panelGrid>

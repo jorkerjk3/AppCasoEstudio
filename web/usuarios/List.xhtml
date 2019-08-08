@@ -51,19 +51,20 @@
                             </f:facet>
                             <p:selectBooleanCheckbox value="#{item.estado}" disabled="true"/>
                         </p:column>
+                      
                         <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Persona Asociada"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idpersonas.nombres} #{item.idpersonas.apellidos}"/>
+                        </p:column>
+                          <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListUsuariosTitle_fechacreacion}"/>
                             </f:facet>
                             <h:outputText value="#{item.fechacreacion}">
                                 <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                             </h:outputText>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Persona Asociada"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idpersonas.nombres} #{item.idpersonas.apellidos}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{usuariosController.prepareCreate}" update=":UsuariosCreateForm" oncomplete="PF('UsuariosCreateDialog').show()"/>

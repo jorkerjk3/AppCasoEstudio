@@ -12,8 +12,7 @@
             <h:form id="EstadocivilCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{estadocivilController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateEstadocivilLabel_idestadocivil}" for="idestadocivil" />
-                        <p:inputText id="idestadocivil" value="#{estadocivilController.selected.idestadocivil}" title="#{bundle.CreateEstadocivilTitle_idestadocivil}" required="true" requiredMessage="#{bundle.CreateEstadocivilRequiredMessage_idestadocivil}"/>
+                      
                         <p:outputLabel value="#{bundle.CreateEstadocivilLabel_descripcion}" for="descripcion" />
                         <p:inputText id="descripcion" value="#{estadocivilController.selected.descripcion}" title="#{bundle.CreateEstadocivilTitle_descripcion}" required="true" requiredMessage="#{bundle.CreateEstadocivilRequiredMessage_descripcion}"/>
                     </p:panelGrid>

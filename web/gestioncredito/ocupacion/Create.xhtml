@@ -12,8 +12,7 @@
             <h:form id="OcupacionCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{ocupacionController.selected != null}">
-                        <p:outputLabel value="#{bundleCredito.CreateOcupacionLabel_idocupacion}" for="idocupacion" />
-                        <p:inputText id="idocupacion" value="#{ocupacionController.selected.idocupacion}" title="#{bundleCredito.CreateOcupacionTitle_idocupacion}" required="true" requiredMessage="#{bundleCredito.CreateOcupacionRequiredMessage_idocupacion}"/>
+                       
                         <p:outputLabel value="#{bundleCredito.CreateOcupacionLabel_descripcion}" for="descripcion" />
                         <p:inputText id="descripcion" value="#{ocupacionController.selected.descripcion}" title="#{bundleCredito.CreateOcupacionTitle_descripcion}" required="true" requiredMessage="#{bundleCredito.CreateOcupacionRequiredMessage_descripcion}"/>
                     </p:panelGrid>

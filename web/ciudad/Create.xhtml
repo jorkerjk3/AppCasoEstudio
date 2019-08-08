@@ -12,14 +12,14 @@
             <h:form id="CiudadCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{ciudadController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateCiudadLabel_idciudad}" for="idciudad" />
-                        <p:inputText id="idciudad" value="#{ciudadController.selected.idciudad}" title="#{bundle.CreateCiudadTitle_idciudad}" required="true" requiredMessage="#{bundle.CreateCiudadRequiredMessage_idciudad}"/>
+                                              
                         <p:outputLabel value="#{bundle.CreateCiudadLabel_nombreciudad}" for="nombreciudad" />
                         <p:inputText id="nombreciudad" value="#{ciudadController.selected.nombreciudad}" title="#{bundle.CreateCiudadTitle_nombreciudad}" required="true" requiredMessage="#{bundle.CreateCiudadRequiredMessage_nombreciudad}"/>
                         <p:outputLabel value="#{bundle.CreateCiudadLabel_iddepartamento}" for="iddepartamento" />
                         <p:selectOneMenu id="iddepartamento" value="#{ciudadController.selected.iddepartamento}" required="true" requiredMessage="#{bundle.EditCiudadRequiredMessage_iddepartamento}">
                             <f:selectItems value="#{departamentoController.itemsAvailableSelectOne}"
                                            var="iddepartamentoItem"
+                                           itemLabel="#{iddepartamentoItem.nombredepartamento}"
                                            itemValue="#{iddepartamentoItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>

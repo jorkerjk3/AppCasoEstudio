@@ -31,5 +31,9 @@ public class principalMangeBean {
            
         }
        
-    }   
+    }
+ 
+ public void cerrarSesion(){
+     FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+ }
 }

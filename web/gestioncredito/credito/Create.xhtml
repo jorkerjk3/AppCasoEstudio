@@ -8,13 +8,7 @@
     <h:head>
         
     <h:outputScript library="Recursos" name="Js/jquery-3.4.1.min.js"> </h:outputScript>
-    <script type="text/javascript">
-    $(document).ready(function (){
-       alert("prueba");
-        
-    });     
-    </script>
-        
+        <!-- PTE VALIDACIONES FECHAS Y OTROS-->
     </h:head> 
   
     <h:body>
@@ -24,22 +18,31 @@
         <p:dialog id="CreditoCreateDlg" widgetVar="CreditoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="Nuevo Crédito">
             <h:form id="CreditoCreateForm">
                 <h:panelGroup id="display">
-                    <h4>Esta información es utilizada para generarte una oferta que se ajuste a tu perfil.</h4>
+                    <h4 align="center">Esta información es utilizada para generarte una oferta que se ajuste a tu perfil.</h4>
                     
+                    <hr/> 
+                          
+                    <h3 align="center">Información Personal</h3>  
+                      
                     <p:panelGrid columns="4" rendered="#{creditoController.selected != null}">
-                               
-                      <p:outputLabel value="Persona Asociada" for="idpersonas" />
-                      <p:selectOneMenu id="idpersonas" value="#{creditoController.selected.idpersonas}" required="true" requiredMessage="#{bundle.EditCreditoRequiredMessage_idpersonas}">
-                            <f:selectItems value="#{personasController.itemsAvailableSelectOne}"
-                                           itemLabel="#{idpersonasItem.nombres} #{idpersonasItem.apellidos} (#{idpersonasItem.numerodocumento})"
-                                           var="idpersonasItem"
-                                           itemValue="#{idpersonasItem}"/>
-                            
-                             <f:ajax render="documento" event="change" listener="#{creditoController.listenerDocumento}" execute="@this"/>
+                              
+                                         
+                         <p:outputLabel value="Tipo Crédito" for="idtipocredito" />
+                        <p:selectOneMenu id="idtipocredito" value="#{creditoController.selected.idtipocredito}" required="true" requiredMessage="#{bundleCredito.EditCreditoRequiredMessage_idtipocredito}">
+                           <f:selectItems value="#{tipoCreditoController.itemsAvailableSelectOne}"                                          
+                                           var="idtipocreditoItem"
+                                           itemLabel="#{idtipocreditoItem.descripcion}"
+                                           itemValue="#{idtipocreditoItem}"/>
                         </p:selectOneMenu>
+                         
+                      <p:outputLabel value="Nombres" for="nombres" />
+                      <p:inputText id="nombres" value="#{creditoController.nombres}" title="Nombres" required="true" requiredMessage="El campo nombres es requerido" />
                         
+                       <p:outputLabel value="Apellidos" for="apellidos" />
+                       <p:inputText id="apellidos" value="#{creditoController.apellidos}" title="Apellidos" required="true" requiredMessage="El campo apellidos es requerido" />
+                      
                         <p:outputLabel value="Tipo Documento" for="idtipodocumento" />
-                        <p:selectOneMenu id="idtipodocumento" value="2" required="true" requiredMessage="#{bundle.EditPersonasRequiredMessage_idtipodocumento}">
+                        <p:selectOneMenu id="idtipodocumento" value="#{creditoController.idtipodocumento}" required="true" requiredMessage="#{bundle.EditPersonasRequiredMessage_idtipodocumento}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{tipoDocumentoController.itemsAvailableSelectOne}"
                                            itemLabel="#{idtipodocumentoItem.descripcion}"
@@ -48,16 +51,77 @@
                         </p:selectOneMenu>
                         
                       <p:outputLabel value="Documento" for="documento" />
-                      <p:inputText id="documento" value="#{creditoController.selected.idpersonas.numerodocumento}" title="Número Documento" />
+                      <p:inputText id="documento" value="#{creditoController.documento}" required="true" title="Número Documento" />
                              
+                      <p:outputLabel value="Fecha Nacimiento" for="fcehanacimiento" />
+                      <p:calendar id="fcehanacimiento" pattern="dd/MM/yyyy" value="#{creditoController.fcehanacimiento}" title="#{bundle.EditPersonasTitle_fcehanacimiento}" required="true" requiredMessage="#{bundle.EditPersonasRequiredMessage_fcehanacimiento}" showOn="button"/>
+                        
+                        <p:outputLabel value="Genero" for="genero" />                        
+                        <p:selectOneMenu id="genero" value="#{creditoController.genero}" required="true" requiredMessage="#{bundle.CreatePersonasRequiredMessage_genero}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItem 
+                                           itemLabel="Masculino"
+                                           itemValue="M"/>
+                            <f:selectItem 
+                                           itemLabel="Femenino"
+                                           itemValue="F"/>                           
+                            <f:selectItem 
+                                           itemLabel="Indeterminado"
+                                           itemValue="I"/> 
+                        </p:selectOneMenu>
+                        
+                        <p:outputLabel value="Email" for="email" />
+                        <p:inputText id="email" value="#{creditoController.email}" title="#{bundle.CreatePersonasTitle_email}" required="true" requiredMessage="#{bundle.CreatePersonasRequiredMessage_email}"/>
+                       
+                        <p:outputLabel value="Celular" for="celular" />
+                        <p:inputText id="celular" value="#{creditoController.celular}" title="#{bundle.CreatePersonasTitle_celular}" required="true" requiredMessage="#{bundle.CreatePersonasRequiredMessage_celular}"/>
+                        
+                        <p:outputLabel value="Ingresos" for="ingresosmensuales" />                       
+                        <p:inputText id="ingresosmensuales" value="#{creditoController.ingresosmensuales}" required="true" title="El campo ingresos es requerido" />
+                        
+                        <p:outputLabel value="Estado Civil" for="idestadocivil" />
+                        <p:selectOneMenu id="idestadocivil" value="#{creditoController.estadocivil}" required="true" requiredMessage="El campos estado civil es requerido">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{estadocivilController.itemsAvailableSelectOne}"
+                                           var="idestadocivilItem"
+                                           itemLabel="#{idestadocivilItem.descripcion}"
+                                           itemValue="#{idestadocivilItem}"/>
+                        </p:selectOneMenu>
+                        
+                        
+                        <p:outputLabel value="Estrato" for="estrato" />
+                        <p:inputText id="estrato" value="#{creditoController.estrato}" title="#{bundle.CreatePersonasTitle_estrato}" />
+                        
+                        <p:outputLabel value="Nivel Académico" for="idnivelacademico" />
+                        <p:selectOneMenu id="idnivelacademico" value="#{creditoController.idnivelacademico}" required="true" requiredMessage="#{bundle.EditPersonasRequiredMessage_idnivelacademico}">
+                            <f:selectItems value="#{nivelAcademicoController.itemsAvailableSelectOne}"
+                                           var="idnivelacademicoItem"
+                                           itemLabel="#{idnivelacademicoItem.descripcion}"
+                                           itemValue="#{idnivelacademicoItem}"/>
+                        </p:selectOneMenu>
+                        
+                        <p:outputLabel value="Ciudad Residencia" for="idciudad" />
+                        <p:selectOneMenu id="idciudad" value="#{creditoController.idciudad}" required="true" requiredMessage="#{bundle.EditPersonasRequiredMessage_idciudad}">
+                            <f:selectItems value="#{ciudadController.itemsAvailableSelectOne}"
+                                           var="idciudadItem"
+                                           itemLabel="#{idciudadItem.nombreciudad}"
+                                           itemValue="#{idciudadItem}"/>
+                        </p:selectOneMenu>
+                          
+                    </p:panelGrid>
+                    
+                    <hr/> 
+                    <h3 align="center">Información Laboral</h3>
+                 
+                    <h:panelGrid columns="4" rendered="#{creditoController.selected != null}">
                         <p:outputLabel value="Nombre Empresa" for="nombreempresa" />
-                        <p:inputText id="nombreempresa" value="#{creditoController.selected.nombreempresa}" title="#{bundleCredito.CreateCreditoTitle_nombreempresa}" />
+                        <p:inputText id="nombreempresa" value="#{creditoController.selected.nombreempresa}" required="true" requiredMessage="El campo Nombre empresa es requerido" title="#{bundleCredito.CreateCreditoTitle_nombreempresa}" />
                        
                         <p:outputLabel value="Fecha Ingreso" for="fechaingreso" />
-                        <p:calendar id="fechaingreso" pattern="dd/MM/yyyy HH:mm:ss" value="#{creditoController.selected.fechaingreso}" title="#{bundleCredito.EditCreditoTitle_fechaingreso}"  showOn="button"/>
+                        <p:calendar id="fechaingreso" pattern="dd/MM/yyyy" value="#{creditoController.selected.fechaingreso}" title="#{bundleCredito.EditCreditoTitle_fechaingreso}"  showOn="button"/>
                        
                         <p:outputLabel value="Teléfono Empresa" for="telefonoempresa" />
-                        <p:inputText id="telefonoempresa" value="#{creditoController.selected.telefonoempresa}" title="#{bundleCredito.CreateCreditoTitle_telefonoempresa}" />
+                        <p:inputText id="telefonoempresa" value="#{creditoController.selected.telefonoempresa}" required="true" requiredMessage="El campo teléfono empresa es requerido" title="#{bundleCredito.CreateCreditoTitle_telefonoempresa}" />
                         
                         <p:outputLabel value="Dirección Empresa" for="direccionempresa" />
                         <p:inputText id="direccionempresa" value="#{creditoController.selected.direccionempresa}" title="#{bundleCredito.CreateCreditoTitle_direccionempresa}" />
@@ -71,24 +135,20 @@
                                            itemValue="#{idocupacionItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="Tipo Contrato" for="idtipocontrato" />
-                        <p:selectOneMenu id="idtipocontrato" value="#{creditoController.selected.idtipocontrato}" >
+                        <p:selectOneMenu id="idtipocontrato" value="#{creditoController.selected.idtipocontrato}" required="true" requiredMessage="El campo tipo contrato es requerido" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{tipoContratoController.itemsAvailableSelectOne}"
                                            itemLabel="#{idtipocontratoItem.descripcion}"
                                            var="idtipocontratoItem"
                                            itemValue="#{idtipocontratoItem}"/>
                         </p:selectOneMenu>
-                        <p:outputLabel value="Tipo Crédito" for="idtipocredito" />
-                        <p:selectOneMenu id="idtipocredito" value="#{creditoController.selected.idtipocredito}" required="true" requiredMessage="#{bundleCredito.EditCreditoRequiredMessage_idtipocredito}">
-                            <f:selectItems value="#{tipoCreditoController.itemsAvailableSelectOne}"
-                                           itemLabel="#{idtipocreditoItem.descripcion}"
-                                           var="idtipocreditoItem"
-                                           itemValue="#{idtipocreditoItem}"/>
-                        </p:selectOneMenu>
-                    </p:panelGrid>
-                    <p:commandButton actionListener="#{creditoController.create}" value="Enviar" update="display,:CreditoListForm:datalist,:growl" oncomplete="handleSubmit(args,'CreditoCreateDialog');"/>
+                        
+                    </h:panelGrid>
+                      <p:commandButton  actionListener="#{creditoController.create}" value="Enviar" update="display,:CreditoListForm:datalist,:growl" oncomplete="handleSubmit(args,'CreditoCreateDialog');"/>
                     <p:commandButton value="#{bundleCredito.Cancel}" onclick="CreditoCreateDialog.hide()"/>
                 </h:panelGroup>
+             
+        
             </h:form>
         </p:dialog>
 

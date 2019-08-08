@@ -6,9 +6,16 @@
 package GeneralController.Controller;
 
 import dbEntities.Credito;
+import dbEntities.Personas;
+import dbEntities.TipoDocumento;
+import dbEntities.Usuarios;
+import java.util.List;
 import javax.ejb.Stateless;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *

@@ -24,8 +24,8 @@
                         <h:outputText value="#{usuariosController.selected.fechacreacion}" title="#{bundle.ViewUsuariosTitle_fechacreacion}">
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                         </h:outputText>
-                        <h:outputText value="#{bundle.ViewUsuariosLabel_idpersonas}"/>
-                        <h:outputText value="#{usuariosController.selected.idpersonas}" title="#{bundle.ViewUsuariosTitle_idpersonas}"/>
+                        <h:outputText value="Persona Asociada"/>
+                        <h:outputText value="#{usuariosController.selected.idpersonas.nombres} #{usuariosController.selected.idpersonas.apellidos}" title="Persona Asociada}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="UsuariosViewDialog.hide()"/>
                 </h:panelGroup>

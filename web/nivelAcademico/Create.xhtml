@@ -11,9 +11,7 @@
         <p:dialog id="NivelAcademicoCreateDlg" widgetVar="NivelAcademicoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateNivelAcademicoTitle}">
             <h:form id="NivelAcademicoCreateForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{nivelAcademicoController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateNivelAcademicoLabel_idnivelacademico}" for="idnivelacademico" />
-                        <p:inputText id="idnivelacademico" value="#{nivelAcademicoController.selected.idnivelacademico}" title="#{bundle.CreateNivelAcademicoTitle_idnivelacademico}" required="true" requiredMessage="#{bundle.CreateNivelAcademicoRequiredMessage_idnivelacademico}"/>
+                    <p:panelGrid columns="2" rendered="#{nivelAcademicoController.selected != null}">                        
                         <p:outputLabel value="#{bundle.CreateNivelAcademicoLabel_descripcion}" for="descripcion" />
                         <p:inputText id="descripcion" value="#{nivelAcademicoController.selected.descripcion}" title="#{bundle.CreateNivelAcademicoTitle_descripcion}" required="true" requiredMessage="#{bundle.CreateNivelAcademicoRequiredMessage_descripcion}"/>
                     </p:panelGrid>

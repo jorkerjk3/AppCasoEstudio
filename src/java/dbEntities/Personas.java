@@ -93,7 +93,7 @@ public class Personas implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "Celular")
-    private int celular;
+    private long celular;
     @Size(max = 50)
     @Column(name = "Ingresos_mensuales")
     private String ingresosmensuales;
@@ -211,11 +211,11 @@ public class Personas implements Serializable {
         this.email = email;
     }
 
-    public int getCelular() {
+    public long getCelular() {
         return celular;
     }
 
-    public void setCelular(int celular) {
+    public void setCelular(long celular) {
         this.celular = celular;
     }
 

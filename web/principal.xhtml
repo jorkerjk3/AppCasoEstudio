@@ -22,8 +22,9 @@
                 <h:form id="menuForm">
                     <p:menubar>
                         <p:menuitem value="#{bundle.Home}" outcome="/principal" icon="ui-icon-home"/>
-                        <p:submenu label="Modulos">                           
-                            <p:menuitem value="Personas - Clientes" outcome="/personas/List.xhtml" />                            
+                        <p:submenu label="Modulos   ">                           
+                            <p:menuitem value="Gestión Personas - Clientes" outcome="/personas/List.xhtml" />                            
+                            <p:menuitem value="Gestión Credito" outcome="/gestioncredito/credito/List.xhtml" />
                         </p:submenu>
                         <p:submenu label="Maestros">
                             <p:menuitem value="Ciudad" outcome="/ciudad/List.xhtml" />
@@ -31,15 +32,24 @@
                             <p:menuitem value="Estadocivil" outcome="/estadocivil/List.xhtml" />
                             <p:menuitem value="NivelAcademico" outcome="/nivelAcademico/List.xhtml" />
                             <p:menuitem value="TipoDocumento" outcome="/tipoDocumento/List.xhtml" />
-                            <p:menuitem value="Credito" outcome="/gestioncredito/credito/List.xhtml" />
+                            <p:menuitem value="Ocupación" outcome="/gestioncredito/ocupacion/List.xhtml" />
+                            <p:menuitem value="Tipo Contrato" outcome="/gestioncredito/tipoContrato/List.xhtml" />
+                            <p:menuitem value="Tipo Crédito" outcome="/gestioncredito/tipoCredito/List.xhtml" />
                             <p:menuitem value="Usuarios" outcome="/usuarios/List.xhtml" />
                         </p:submenu>
+                        
+                             <f:facet name="options">
+           
+                              <p:commandButton icon="ui-icon-circle-close"  actionListener="#{principalMangeBean.cerrarSesion()}" value="Cerrar Sesión" action="login?faces-redirect=true" />
+                             </f:facet>
                     </p:menubar>
+                  
                 </h:form>
             </p:layoutUnit>
 
       <p:layoutUnit position="center">
-                                        
+                
+          
   <p:panel id="horizontal" style="background-color: #dce8f1" header="Centauros Bank" toggleable="true" toggleOrientation="vertical">
         <h:panelGrid columns="3" cellpadding="1"  >
            

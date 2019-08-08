@@ -12,8 +12,7 @@
             <h:form id="NivelAcademicoEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{nivelAcademicoController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditNivelAcademicoLabel_idnivelacademico}" for="idnivelacademico" />
-                        <p:inputText id="idnivelacademico" value="#{nivelAcademicoController.selected.idnivelacademico}" title="#{bundle.EditNivelAcademicoTitle_idnivelacademico}" required="true" requiredMessage="#{bundle.EditNivelAcademicoRequiredMessage_idnivelacademico}"/>
+                       
                         <p:outputLabel value="#{bundle.EditNivelAcademicoLabel_descripcion}" for="descripcion" />
                         <p:inputText id="descripcion" value="#{nivelAcademicoController.selected.descripcion}" title="#{bundle.EditNivelAcademicoTitle_descripcion}" required="true" requiredMessage="#{bundle.EditNivelAcademicoRequiredMessage_descripcion}"/>
                     </p:panelGrid>

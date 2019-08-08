@@ -11,9 +11,7 @@
         <p:dialog id="EstadocivilEditDlg" widgetVar="EstadocivilEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEstadocivilTitle}">
             <h:form id="EstadocivilEditForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{estadocivilController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditEstadocivilLabel_idestadocivil}" for="idestadocivil" />
-                        <p:inputText id="idestadocivil" value="#{estadocivilController.selected.idestadocivil}" title="#{bundle.EditEstadocivilTitle_idestadocivil}" required="true" requiredMessage="#{bundle.EditEstadocivilRequiredMessage_idestadocivil}"/>
+                    <p:panelGrid columns="2" rendered="#{estadocivilController.selected != null}">                      
                         <p:outputLabel value="#{bundle.EditEstadocivilLabel_descripcion}" for="descripcion" />
                         <p:inputText id="descripcion" value="#{estadocivilController.selected.descripcion}" title="#{bundle.EditEstadocivilTitle_descripcion}" required="true" requiredMessage="#{bundle.EditEstadocivilRequiredMessage_descripcion}"/>
                     </p:panelGrid>

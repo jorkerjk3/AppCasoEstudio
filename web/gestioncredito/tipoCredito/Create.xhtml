@@ -11,9 +11,7 @@
         <p:dialog id="TipoCreditoCreateDlg" widgetVar="TipoCreditoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundleCredito.CreateTipoCreditoTitle}">
             <h:form id="TipoCreditoCreateForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{tipoCreditoController.selected != null}">
-                        <p:outputLabel value="#{bundleCredito.CreateTipoCreditoLabel_idtipocredito}" for="idtipocredito" />
-                        <p:inputText id="idtipocredito" value="#{tipoCreditoController.selected.idtipocredito}" title="#{bundleCredito.CreateTipoCreditoTitle_idtipocredito}" required="true" requiredMessage="#{bundleCredito.CreateTipoCreditoRequiredMessage_idtipocredito}"/>
+                    <p:panelGrid columns="2" rendered="#{tipoCreditoController.selected != null}">                        
                         <p:outputLabel value="#{bundleCredito.CreateTipoCreditoLabel_descripcion}" for="descripcion" />
                         <p:inputText id="descripcion" value="#{tipoCreditoController.selected.descripcion}" title="#{bundleCredito.CreateTipoCreditoTitle_descripcion}" required="true" requiredMessage="#{bundleCredito.CreateTipoCreditoRequiredMessage_descripcion}"/>
                     </p:panelGrid>
